@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import qs from 'qs';
 import deepExtend from 'deep-extend';
 
-export function useRequest<Data extends any, Error extends any>(
+export function useRequest<Data extends unknown, Error extends unknown>(
   endpoint: string,
   config: AxiosRequestConfig = {}
 ): () => Promise<Data> {

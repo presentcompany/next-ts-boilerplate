@@ -7,7 +7,7 @@ import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import { GlobalStyles } from '@/components/common/index';
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps): React.ReactNode {
   const TWENTY_FOUR_HOURS_MS = 86400000;
 
   const [queryClient] = React.useState(

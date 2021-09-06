@@ -1,8 +1,9 @@
+import React from 'react';
 import { Layout } from '@/components/common/index';
 import { usePostsQuery } from '@/api/index';
 import { Grid, GridItem } from '@chakra-ui/react';
 
-export default function Home() {
+export default function Home(): React.ReactElement {
   const { data } = usePostsQuery();
 
   return (
