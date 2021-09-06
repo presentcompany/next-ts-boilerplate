@@ -1,6 +1,19 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "paths": {
+      "@/api/*": ["api/*"],
+      "@/components/*": ["components/*"],
+      "@/elements/*": ["components/elements/*"],
+      "@/fragments/*": ["components/fragments/*"],
+      "@/partials/*": ["components/partials/*"],
+      "@/templates/*": ["components/templates/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/pages/*": ["pages/*"],
+      "@/theme/*": ["theme/*"],
+      "@/public/*": ["public/*"],
+      "@/utils/*": ["utils/*"]
+    },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,6 +27,12 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "out"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.js"
+  ]
 }
