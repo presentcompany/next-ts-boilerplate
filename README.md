@@ -1,5 +1,9 @@
 # Next TS
 
+## Boilerplate Libraries
+
+The boilerplate contains the following libraries
+
 | Dependency                                                       | Version | Use          |
 | ---------------------------------------------------------------- | ------- | ------------ |
 | [@axe-core/react](https://www.npmjs.com/package/@axe-core/react) | 4.2.1   | Accessibiliy |
@@ -11,13 +15,18 @@
 | [react-query](https://react-query.tanstack.com/overview)         | 3.17.2  | Queries      |
 | [next-seo](https://github.com/garmeeh/next-seo)                  | 4.26.0  | SEO          |
 
-| Other libraries of interest | Version | Use |
-| [@next-auth/react-query](https://github.com/nextauthjs/react-query#readme) | 0.0.9 | Authentication |
-| [recoil](https://recoiljs.org/docs/introduction/installation) | 0.3.1 | State Management |
-| [next-joi](https://github.com/codecoolture/next-joi) | 2.2.1 | Route Validation |
-| [next-useragent](https://github.com/tokuda109/next-useragent) | 2.6.0 | Device Useragent |
-| [react-hook-form](https://react-hook-form.com) | 7.9.0 | Forms |
-| [joi](https://joi.dev/) | 17.4.0 | Form Validation Schema |
+## Other Libraries
+
+Other libraries that may be of use
+
+| Dependency                                                                 | Version | Use                    |
+| -------------------------------------------------------------------------- | ------- | ---------------------- |
+| [@next-auth/react-query](https://github.com/nextauthjs/react-query#readme) | 0.0.9   | Authentication         |
+| [recoil](https://recoiljs.org/docs/introduction/installation)              | 0.3.1   | State Management       |
+| [next-joi](https://github.com/codecoolture/next-joi)                       | 2.2.1   | Route Validation       |
+| [next-useragent](https://github.com/tokuda109/next-useragent)              | 2.6.0   | Device Useragent       |
+| [react-hook-form](https://react-hook-form.com)                             | 7.9.0   | Forms                  |
+| [joi](https://joi.dev/)                                                    | 17.4.0  | Form Validation Schema |
 
 ## Getting Started
 
