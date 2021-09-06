@@ -8,10 +8,8 @@ export function useRequest<Data extends any, Error extends any>(
 ): () => Promise<Data> {
   const DEFAULT_API_CONFIG = {
     returnRejectedPromiseOnError: true,
-    // TODO: adjust this yourself
     timeout: 30000,
-    // TODO: remember to put in your base URL in the relevant .env file
-    // baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+    baseURL: process.env.NEXT_PUBLIC_API,
     headers: {
       common: {
         'Content-Type': 'application/json',
