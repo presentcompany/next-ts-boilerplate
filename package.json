@@ -1,11 +1,23 @@
 {
-  "name": "next-ts-light",
+  "name": "next-ts",
   "version": "0.1.0",
   "private": true,
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
   "scripts": {
+    "prepare-husky": "npx husky install",
+    "add-husky": "npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "pre-commit": "lint-staged",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "eslint './**/**/*.{js,jsx,ts,tsx}'",
+    "lint-fix": "yarn lint --fix",
     "export": "next export"
   },
   "dependencies": {
@@ -29,6 +41,7 @@
     "@types/gtag.js": "^0.0.7",
     "@types/qs": "^6.9.7",
     "@types/react": "17.0.20",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
     "eslint": "^7.29.0",
     "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.3.0",
@@ -38,6 +51,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-watch": "^7.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "prettier": "^2.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
