@@ -18,7 +18,8 @@
     "start": "next start",
     "lint": "eslint './**/**/*.{js,jsx,ts,tsx}'",
     "lint-fix": "yarn lint --fix",
-    "export": "next export"
+    "export": "next export",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.7",
@@ -56,6 +57,7 @@
     "eslint-watch": "^7.0.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
+    "next-sitemap": "^1.6.184",
     "prettier": "^2.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
