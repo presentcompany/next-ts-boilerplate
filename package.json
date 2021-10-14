@@ -19,14 +19,15 @@
     "lint": "eslint './**/**/*.{js,jsx,ts,tsx}'",
     "lint-fix": "yarn lint --fix",
     "export": "next export",
-    "postbuild": "next-sitemap",
-    "gen:theme-typings": "chakra-cli tokens ./theme/index.(js|ts)>",
-    "post-install": "npm run gen:theme-typings"
+    "post-build": "next-sitemap",
+    "post-install": "yarn run gen:theme-typings",
+    "gen:theme-typings": "chakra-cli tokens ./theme/index.(js|ts)>"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.7",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@hookform/error-message": "^2.0.0",
     "@types/deep-extend": "^0.4.31",
     "axios": "^0.21.3",
     "deep-extend": "^0.6.0",
@@ -36,6 +37,8 @@
     "qs": "^6.10.1",
     "react": "17.0.2",
     "react-dom": "^17.0.2",
+    "react-google-recaptcha": "^2.1.0",
+    "react-hook-form": "^7.17.4",
     "react-query": "^3.21.1",
     "recoil": "^0.4.1"
   },
@@ -48,6 +51,7 @@
     "@types/qs": "^6.9.7",
     "@types/react": "17.0.20",
     "@types/react-dom": "^17.0.9",
+    "@types/react-google-recaptcha": "^2.1.2",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "eslint": "^7.29.0",
     "eslint-config-next": "^11.0.1",
