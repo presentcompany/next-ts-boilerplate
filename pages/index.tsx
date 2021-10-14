@@ -2,12 +2,14 @@ import React from 'react';
 import { GetStaticPropsResult } from 'next';
 import { QueryClient } from 'react-query';
 import { dehydrate, DehydratedState } from 'react-query/hydration';
+import { Grid } from '@chakra-ui/react';
+
 import { Layout } from '@/components/common/index';
+import { S } from '@/components/pages/Home/index';
 import { usePostsQuery, fetchPosts } from '@/api/index';
-import { Grid, GridItem } from '@chakra-ui/react';
 
 export default function Home(): React.ReactElement {
-  const { data } = usePostsQuery();
+  const posts = usePostsQuery();
 
   return (
     <Layout
@@ -18,12 +20,12 @@ export default function Home(): React.ReactElement {
       <h1>My Home</h1>
 
       <Grid>
-        {!!data?.length &&
-          data.map(({ title, body, id }) => (
-            <GridItem key={id}>
+        {!!posts?.data?.length &&
+          posts.data.map(({ title, body, id }) => (
+            <S.Post key={id}>
               <h2>{title}</h2>
               <p>{body}</p>
-            </GridItem>
+            </S.Post>
           ))}
       </Grid>
     </Layout>
