@@ -8,11 +8,12 @@
       "eslint --fix"
     ]
   },
+  "type": "module",
   "scripts": {
     "prepare-husky": "npx husky install",
-    "add-husky": "npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "add-husky": "npx husky add .husky/pre-commit 'npx --no-install lint-staged'",
     "pre-commit": "lint-staged",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format": "prettier --write '**/*.{js,jsx,ts,tsx,json,md}'",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -21,7 +22,7 @@
     "export": "next export",
     "post-build": "next-sitemap",
     "post-install": "yarn run gen:theme-typings",
-    "gen:theme-typings": "chakra-cli tokens ./theme/index.(js|ts)>"
+    "gen:theme-typings": "chakra-cli tokens './theme/index.ts'"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.7",
