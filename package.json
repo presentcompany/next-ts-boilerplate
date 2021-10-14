@@ -18,7 +18,8 @@
     "start": "next start",
     "lint": "eslint './**/**/*.{js,jsx,ts,tsx}'",
     "lint-fix": "yarn lint --fix",
-    "export": "next export"
+    "export": "next export",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.7",
@@ -32,15 +33,18 @@
     "next-seo": "^4.26.0",
     "qs": "^6.10.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-query": "^3.21.1"
+    "react-dom": "^17.0.2",
+    "react-query": "^3.21.1",
+    "recoil": "^0.4.1"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.3.1",
     "@babel/core": "^7.14.6",
     "@emotion/babel-plugin": "^11.3.0",
     "@types/gtag.js": "^0.0.7",
     "@types/qs": "^6.9.7",
     "@types/react": "17.0.20",
+    "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "eslint": "^7.29.0",
     "eslint-config-next": "^11.0.1",
@@ -53,6 +57,7 @@
     "eslint-watch": "^7.0.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
+    "next-sitemap": "^1.6.184",
     "prettier": "^2.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
