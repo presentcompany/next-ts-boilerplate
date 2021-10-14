@@ -14,8 +14,6 @@ type TextFieldProps = {
   onKeyUpTextField?: React.KeyboardEventHandler<HTMLInputElement>;
   labelText: string;
   type: 'text' | 'email' | 'url' | 'search' | 'password';
-  labelProps?: FormLabelProps;
-  inputProps?: InputProps;
 } & InputProps &
   FormLabelProps &
   FormControlProps &
@@ -29,9 +27,7 @@ export default function TextField({
   name,
   placeholder,
   rules,
-  type,
-  labelProps = {},
-  inputProps = {}
+  type
 }: TextFieldProps): React.ReactElement {
   const {
     field: { ref, name: fieldName, value = '', ...fieldProps },
@@ -49,7 +45,7 @@ export default function TextField({
 
   return (
     <S.FormField id={id} mb="16px" isInvalid={!isValid}>
-      <S.FieldLabel {...labelProps}>
+      <S.FieldLabel>
         {labelText}
 
         <S.InputField
@@ -60,7 +56,6 @@ export default function TextField({
           placeholder={placeholder}
           name={fieldName}
           value={value}
-          {...inputProps}
           {...fieldProps}
         />
 
