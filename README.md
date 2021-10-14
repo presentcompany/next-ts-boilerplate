@@ -228,6 +228,10 @@ Where after, you can use in your Functional Component like so:
 ...
 ```
 
+### React Query
+
+For tips on typing React Query, you can refer to this article [React Query And Typescript](https://tkdodo.eu/blog/react-query-and-type-script).
+
 ### Recoil
 
 For state management, RecoilJS is used. Recoil states will be included within the same directory as the component that is using it. A piece of atom state and all its selectors to be within the same file. For example, below is a piece of atom state eg. `tableOfContentsState`. For this particular atom, we have a few selectors with a `with` prefix at the front followed by a description of what it is getting. The atom to be exported as default followed by, named exports of selectors.
