@@ -1,1 +1,2 @@
-export { usePostsQuery } from './usePostsQuery';
+export { fetchPosts, usePostsQuery } from './usePostsQuery';
+export type { Post } from './usePostsQuery';

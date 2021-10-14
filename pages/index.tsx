@@ -1,6 +1,9 @@
 import React from 'react';
+import { GetStaticPropsResult } from 'next';
+import { QueryClient } from 'react-query';
+import { dehydrate, DehydratedState } from 'react-query/hydration';
 import { Layout } from '@/components/common/index';
-import { usePostsQuery } from '@/api/index';
+import { usePostsQuery, fetchPosts } from '@/api/index';
 import { Grid, GridItem } from '@chakra-ui/react';
 
 export default function Home(): React.ReactElement {
@@ -25,4 +28,17 @@ export default function Home(): React.ReactElement {
       </Grid>
     </Layout>
   );
+}
+
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<{ dehydratedState: DehydratedState }>
+> {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery('posts', fetchPosts());
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient)
+    }
+  };
 }
