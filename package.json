@@ -19,7 +19,9 @@
     "lint": "eslint './**/**/*.{js,jsx,ts,tsx}'",
     "lint-fix": "yarn lint --fix",
     "export": "next export",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "gen:theme-typings": "chakra-cli tokens ./theme/index.(js|ts)>",
+    "post-install": "npm run gen:theme-typings"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.7",
@@ -40,6 +42,7 @@
   "devDependencies": {
     "@axe-core/react": "^4.3.1",
     "@babel/core": "^7.14.6",
+    "@chakra-ui/cli": "^1.5.2",
     "@emotion/babel-plugin": "^11.3.0",
     "@types/gtag.js": "^0.0.7",
     "@types/qs": "^6.9.7",
