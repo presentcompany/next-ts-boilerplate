@@ -8,7 +8,6 @@
       "eslint --fix"
     ]
   },
-  "type": "module",
   "scripts": {
     "prepare-husky": "npx husky install",
     "add-husky": "npx husky add .husky/pre-commit 'npx --no-install lint-staged'",
