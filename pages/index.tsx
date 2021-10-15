@@ -26,7 +26,7 @@ export default function Home(): React.ReactElement {
         {!!posts?.data?.length &&
           posts.data.map(({ title, body, id }) => (
             <S.Post key={id}>
-              <Text as="h2" fontWeight={900}>
+              <Text as="h2" fontWeight={900} color="brand.500">
                 {title}
               </Text>
               <p>{body}</p>
