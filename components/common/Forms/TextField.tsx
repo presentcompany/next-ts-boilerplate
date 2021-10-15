@@ -8,10 +8,10 @@ import { S } from './styled';
 
 type TextFieldProps = {
   name: string;
-  onBlurTextField?: React.FocusEventHandler<HTMLInputElement>;
-  onChangeTextField?: React.ChangeEventHandler<HTMLInputElement>;
-  onFocusTextField?: React.FocusEventHandler<HTMLInputElement>;
-  onKeyUpTextField?: React.KeyboardEventHandler<HTMLInputElement>;
+  onBlurField?: React.FocusEventHandler<HTMLInputElement>;
+  onChangeField?: React.ChangeEventHandler<HTMLInputElement>;
+  onFocusField?: React.FocusEventHandler<HTMLInputElement>;
+  onKeyUpField?: React.KeyboardEventHandler<HTMLInputElement>;
   labelText: string;
   type: 'text' | 'email' | 'url' | 'search' | 'password';
 } & InputProps &
@@ -25,12 +25,21 @@ export default function TextField({
   defaultValue,
   labelText,
   name,
+  onBlurField,
+  onChangeField,
   placeholder,
   rules,
   type
 }: TextFieldProps): React.ReactElement {
   const {
-    field: { ref, name: fieldName, value = '', ...fieldProps },
+    field: {
+      ref,
+      name: fieldName,
+      value = '',
+      onChange,
+      onBlur,
+      ...fieldProps
+    },
     formState
   } = useController({
     name,
@@ -42,6 +51,22 @@ export default function TextField({
   // * NOTE: formState.isValid runs infinitely for some reason,
   // * running check on errors object instead as workaround
   const isValid = isEmpty(formState.errors);
+
+  const onChangeTextField = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!!onChangeField) {
+      onChangeField(e);
+    }
+
+    onChange(e);
+  };
+
+  const onBlurTextField = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (!!onBlurField) {
+      onBlurField(e);
+    }
+
+    onBlur();
+  };
 
   return (
     <S.FormField id={id} mb="16px" isInvalid={!isValid}>
@@ -56,6 +81,8 @@ export default function TextField({
           placeholder={placeholder}
           name={fieldName}
           value={value}
+          onChange={onChangeTextField}
+          onBlur={onBlurTextField}
           {...fieldProps}
         />
 
