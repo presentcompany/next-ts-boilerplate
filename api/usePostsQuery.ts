@@ -1,4 +1,5 @@
 import { Request } from '@/utils/request';
+import { AxiosRequestConfig } from 'axios';
 import { useQuery } from 'react-query';
 import { endpoints } from './endpoints';
 
@@ -9,10 +10,19 @@ export type Post = {
   body: string;
 };
 
-export function fetchPosts() {
-  return Request.get<Post[], Error>(endpoints.POSTS);
+export function fetchPosts(params: AxiosRequestConfig = {}) {
+  return Request.get<Post[], Error>(endpoints.POSTS, params);
 }
 
-export function usePostsQuery() {
-  return useQuery<Post[], Error>('posts', fetchPosts());
+export function usePostsQuery(searchQuery: string = '') {
+  const requestConfig = {
+    params: {
+      ...(!!searchQuery && { title: searchQuery })
+    }
+  };
+
+  return useQuery<Post[], Error>(
+    ['posts', searchQuery],
+    fetchPosts(requestConfig)
+  );
 }

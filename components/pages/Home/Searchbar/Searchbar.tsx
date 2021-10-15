@@ -1,28 +1,30 @@
 import React from 'react';
+import { useSetRecoilState } from 'recoil';
 import { FormProvider, useForm } from 'react-hook-form';
+
+import { searchbarQueryState } from './state/atoms';
 import { TextField } from '@/components/common/index';
 
-type SearchFormData = {
-  search: string;
-};
-
 export default function Searchbar() {
+  const setSearchQuery = useSetRecoilState(searchbarQueryState);
+
   const form = useForm({
     mode: 'all'
   });
 
-  const onSubmit = async (data: SearchFormData): Promise<void> => {
-    console.log(data);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
   };
 
   return (
     <FormProvider {...form}>
-      <form noValidate onSubmit={form.handleSubmit(onSubmit)}>
+      <form noValidate>
         <TextField
           id="searchbar"
           name="searchbar"
           type="search"
           labelText="Search"
+          onChangeField={onChange}
           control={form.control}
         />
       </form>
