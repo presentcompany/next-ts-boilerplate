@@ -8,6 +8,7 @@ import { Hydrate } from 'react-query/hydration';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 
 import { GlobalStyles } from '@/components/common/index';
+import { theme } from '@/theme/index';
 import * as gtag from '@/utils/analytics';
 
 const isServerSideRendered = () => {
@@ -65,7 +66,7 @@ function App({ Component, pageProps }: AppProps): React.ReactNode {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <GlobalStyles />
           <CSSReset />
           <ReactQueryDevtools />

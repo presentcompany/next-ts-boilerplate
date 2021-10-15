@@ -1,13 +1,18 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import { GetStaticPropsResult } from 'next';
 import { QueryClient } from 'react-query';
 import { dehydrate, DehydratedState } from 'react-query/hydration';
+import { Grid, Text } from '@chakra-ui/react';
+
 import { Layout } from '@/components/common/index';
+import { S, Searchbar } from '@/components/pages/Home/index';
 import { usePostsQuery, fetchPosts } from '@/api/index';
-import { Grid, GridItem } from '@chakra-ui/react';
+import { selectSearchbarQuery } from '@/components/pages/Home/Searchbar/state/selectors';
 
 export default function Home(): React.ReactElement {
-  const { data } = usePostsQuery();
+  const searchQuery = useRecoilValue(selectSearchbarQuery);
+  const posts = usePostsQuery(searchQuery);
 
   return (
     <Layout
@@ -15,15 +20,17 @@ export default function Home(): React.ReactElement {
       className="home-index"
       description={'My Page Description'}
     >
-      <h1>My Home</h1>
+      <Searchbar />
 
       <Grid>
-        {!!data?.length &&
-          data.map(({ title, body, id }) => (
-            <GridItem key={id}>
-              <h2>{title}</h2>
+        {!!posts?.data?.length &&
+          posts.data.map(({ title, body, id }) => (
+            <S.Post key={id}>
+              <Text as="h2" fontWeight={900} color="brand.500">
+                {title}
+              </Text>
               <p>{body}</p>
-            </GridItem>
+            </S.Post>
           ))}
       </Grid>
     </Layout>

@@ -11,7 +11,7 @@
       "@/utils/*": ["utils/*"]
     },
     "target": "esnext",
-    "module": "esnext",
+    "module": "commonjs",
     "jsx": "preserve",
     "lib": ["dom", "es2018"],
     "moduleResolution": "node",
