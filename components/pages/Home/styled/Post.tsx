@@ -2,10 +2,15 @@ import styled from '@emotion/styled';
 import { GridItem } from '@chakra-ui/react';
 import type { AppTheme } from '@/theme/index';
 
-const Post = styled(GridItem)(({ theme }) => {
+type PostProps = {
+  theme: AppTheme;
+};
+
+const Post = styled(GridItem)(({ theme }: PostProps) => {
   return {
-    border: `1px solid ${(theme as AppTheme)?.colors?.black}`,
-    marginBottom: '1em'
+    border: `1px solid ${theme?.colors?.brand['500']}`,
+    padding: theme.space?.['4'],
+    marginBottom: theme.space?.['4']
   };
 });
 
