@@ -15,18 +15,19 @@ The boilerplate contains the following libraries
 | [recoil](https://recoiljs.org/docs/introduction/installation)    | 0.3.1   | State Management |
 | [react-query](https://react-query.tanstack.com/overview)         | 3.17.2  | Queries          |
 | [next-seo](https://github.com/garmeeh/next-seo)                  | 4.26.0  | SEO              |
+| [react-hook-form](https://react-hook-form.com)                   | 7.9.0   | Forms            |
 
 ## Other Libraries
 
 Other libraries that may be of use
 
-| Dependency                                                                 | Version | Use                    |
-| -------------------------------------------------------------------------- | ------- | ---------------------- |
-| [@next-auth/react-query](https://github.com/nextauthjs/react-query#readme) | 0.0.9   | Authentication         |
-| [next-joi](https://github.com/codecoolture/next-joi)                       | 2.2.1   | Route Validation       |
-| [next-useragent](https://github.com/tokuda109/next-useragent)              | 2.6.0   | Device Useragent       |
-| [react-hook-form](https://react-hook-form.com)                             | 7.9.0   | Forms                  |
-| [joi](https://joi.dev/)                                                    | 17.4.0  | Form Validation Schema |
+| Dependency                                                                 | Version | Use                                      |
+| -------------------------------------------------------------------------- | ------- | ---------------------------------------- |
+| [@next-auth/react-query](https://github.com/nextauthjs/react-query#readme) | 0.0.9   | Authentication                           |
+| [next-joi](https://github.com/codecoolture/next-joi)                       | 2.2.1   | Route Validation                         |
+| [next-useragent](https://github.com/tokuda109/next-useragent)              | 2.6.0   | Device Useragent                         |
+| [joi](https://joi.dev/)                                                    | 17.4.0  | Form Validation Schema (Node + Browser)  |
+| [yup](https://github.com/jquense/yup)                                      | 17.4.0  | Form Validation Schema (Browser focused) |
 
 ## Getting Started
 
@@ -40,12 +41,19 @@ To get started:
 
 ## Scripts
 
-| Script | What it does                                                                  |
-| ------ | ----------------------------------------------------------------------------- |
-| dev    | starts the application in development mode w/ lint concurrently               |
-| build  | creates an optimised production build of your application                     |
-| start  | starts the application in production mode. run `build` first before doing so. |
-| export | generates the static pages                                                    |
+| Script            | What it does                                                                  |
+| ----------------- | ----------------------------------------------------------------------------- |
+| dev               | starts the application in development mode w/ lint concurrently               |
+| build             | creates an optimised production build of your application                     |
+| start             | starts the application in production mode. run `build` first before doing so. |
+| export            | generates the static pages                                                    |
+| gen:sitemap       | generates sitemap                                                             |
+| gen:theme-typings | generates theme typings for Chakra UI theme                                   |
+| cy:test           | runs cypress tests                                                            |
+| cy:open           | runs cypress tests in browser                                                 |
+| test              | runs Jest tests once                                                          |
+| test:watch        | runs Jest tests in watch mode for changed files only                          |
+| test:watch-all    | runs Jest tests in watch mode for all files                                   |
 
 ## ENV
 
