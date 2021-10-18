@@ -37,7 +37,7 @@ import { selector } from 'recoil';
 export const selectRootMenus = selector({
   key: 'selectRootMenus',
   get: ({ get }) => {
-    const menuItems = get(tableOfContentsState);
+    const menuItems = get(menusState);
     return menuItems.filter((menu) => !menu.parentId);
   }
 });
@@ -67,7 +67,7 @@ export const selectRootMenus = selector({
   get:
     (pageId) =>
     ({ get }) => {
-      const menuItems = get(tableOfContentsState);
+      const menuItems = get(menusState);
       return menuItems.filter((menu) => menu.id === pageId);
     }
 });
