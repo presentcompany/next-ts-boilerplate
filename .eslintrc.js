@@ -4,31 +4,31 @@ module.exports = {
     es6: true,
     browser: true,
     jest: true,
-    node: true,
+    node: true
   },
   settings: {
     react: {
-      version: 'detect',
+      version: 'detect'
     },
-    typescript: {},
+    typescript: {}
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
-    tsconfigRootDir: './',
+    tsconfigRootDir: './'
   },
   plugins: ['@typescript-eslint', 'import'],
   extends: [
     'plugin:@next/next/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'prettier',
+    'prettier'
   ],
   rules: {
     'react/prop-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'prettier/prettier': 'error',
     '@typescript-eslint/interface-name-prefix': 'off',
-    'react/react-in-jsx-scope': 'off',
-  },
+    'react/react-in-jsx-scope': 'off'
+  }
 };
