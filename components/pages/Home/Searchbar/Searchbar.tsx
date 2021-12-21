@@ -5,7 +5,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { searchbarQueryState } from './state/atoms';
 import { TextField } from '@/components/common/index';
 
-export default function Searchbar() {
+export default function Searchbar(): JSX.Element {
   const setSearchQuery = useSetRecoilState(searchbarQueryState);
 
   const form = useForm({

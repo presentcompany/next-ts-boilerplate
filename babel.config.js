@@ -1,16 +1,6 @@
 module.exports = {
   presets: [
     [
-      '@emotion',
-      {
-        // sourceMap is on by default but source maps are dead code eliminated in production
-        sourceMap: true,
-        autoLabel: 'dev-only',
-        labelFormat: '[local]',
-        cssPropOptimization: true
-      }
-    ],
-    [
       'next/babel',
       {
         'preset-react': {
@@ -20,5 +10,16 @@ module.exports = {
       }
     ]
   ],
-  plugins: ['@emotion/babel-plugin']
+  plugins: [
+    [
+      '@emotion',
+      {
+        // sourceMap is on by default but source maps are dead code eliminated in production
+        sourceMap: true,
+        autoLabel: 'dev-only',
+        labelFormat: '[local]',
+        cssPropOptimization: true
+      }
+    ]
+  ]
 };
