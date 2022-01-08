@@ -352,6 +352,38 @@ There are 2 files of concern in regards to Module Path Aliasing which are **.esl
   ...
 ```
 
+### Custom Babel Config
+
+You can add a custom babel config by simply creating a `babel.config.js` file. Example as follows:
+
+```js
+module.exports = {
+  presets: [
+    [
+      'next/babel',
+      {
+        'preset-react': {
+          runtime: 'automatic',
+          importSource: '@emotion/react'
+        }
+      }
+    ]
+  ],
+  plugins: [
+    [
+      '@emotion',
+      {
+        // *NOTE: sourceMap is on by default but source maps are dead code eliminated in production
+        sourceMap: true,
+        autoLabel: 'dev-only',
+        labelFormat: '[local]',
+        cssPropOptimization: true
+      }
+    ]
+  ]
+};
+```
+
 ### Random errors
 
 NextJS prebuilds a lot of content to a .next folder. This will often cause errors when changing a large amount of code. It can cause seemingly random errors.
