@@ -1,4 +1,4 @@
-import { Request } from '@/utils/request';
+import { Request } from '@/api/request';
 import { AxiosRequestConfig } from 'axios';
 import { useQuery } from 'react-query';
 import { endpoints } from './endpoints';
@@ -14,7 +14,7 @@ export function fetchPosts(params: AxiosRequestConfig = {}) {
   return Request.get<Post[], Error>(endpoints.POSTS, params);
 }
 
-export function usePostsQuery(searchQuery: string = '') {
+export function usePostsQuery(searchQuery = '') {
   const requestConfig = {
     params: {
       ...(!!searchQuery && { title: searchQuery })

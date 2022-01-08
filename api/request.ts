@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import qs from 'qs';
 import deepExtend from 'deep-extend';
+
 export class Request {
   static DEFAULT_API_CONFIG = {
     returnRejectedPromiseOnError: true,
@@ -16,21 +17,21 @@ export class Request {
       qs.stringify(params, { indices: false })
   };
 
-  public static get<Data extends unknown, Error extends unknown>(
+  public static get<Data = void, Error = void>(
     endpoint: string,
     config: AxiosRequestConfig = {}
   ): () => Promise<Data> {
     return Request.send<Data, Error>(endpoint, { ...config, method: 'GET' });
   }
 
-  public static post<Data extends unknown, Error extends unknown>(
+  public static post<Data = void, Error = void>(
     endpoint: string,
     config: AxiosRequestConfig = {}
   ): () => Promise<Data> {
     return Request.send<Data, Error>(endpoint, { ...config, method: 'POST' });
   }
 
-  public static send<Data extends unknown, Error extends unknown>(
+  public static send<Data = void, Error = void>(
     endpoint: string,
     config: AxiosRequestConfig = {}
   ): () => Promise<Data> {
