@@ -5,6 +5,7 @@ import { FormControl, Text } from '@chakra-ui/react';
 type RecaptchaProps = {
   id?: string;
   errorMsg?: string;
+  // eslint-disable-next-line no-unused-vars
   onChange?: (token: string | null) => void;
 };
 

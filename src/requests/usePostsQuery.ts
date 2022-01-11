@@ -1,4 +1,4 @@
-import { Request } from '@/api/request';
+import { Request } from 'requests/request';
 import { AxiosRequestConfig } from 'axios';
 import { useQuery } from 'react-query';
 import { endpoints } from './endpoints';
