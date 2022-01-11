@@ -6,6 +6,7 @@ The boilerplate contains the following libraries
 
 | Dependency                                                       | Version | Use              |
 | ---------------------------------------------------------------- | ------- | ---------------- |
+| [next](https://nextjs.org/docs/getting-started)                  | 12.0.7  | NextJS           |
 | [@axe-core/react](https://www.npmjs.com/package/@axe-core/react) | 4.2.1   | Accessibiliy     |
 | [@chakra-ui/react](https://chakra-ui.com/docs/getting-started)   | 1.6.4   | Styling          |
 | [@emotion/react](https://emotion.sh/docs/introduction)           | 11.4.0  | Styling          |
@@ -35,9 +36,11 @@ The template is running on Yarn and uses an **.nvmrc** file.
 
 To get started:
 
+- Create your own `env` file. An example is provided in `.env.sample`
 - Run `nvm use` to ensure you're running the correct Node version
 - Run `yarn` to install dependencies
-- After dependencies have been installed, run `yarn dev` to get it up and running locally
+- If Husky doesn't exist, run `husky:init` and `husky:prepare`
+- After that, run `yarn dev` to get it up and running locally
 
 ## Scripts
 
@@ -47,6 +50,13 @@ To get started:
 | build             | creates an optimised production build of your application                     |
 | start             | starts the application in production mode. run `build` first before doing so. |
 | export            | generates the static pages                                                    |
+| husky:init        | installs husky                                                                |
+| husky:prepare     | creates local .husky dir and prepares husky                                   |
+| prettier:check    | runs prettier check on source                                                 |
+| prettier:fix      | tells prettier to automagically fix errors                                    |
+| lint              | runs next lint                                                                |
+| lint:fix          | runs next lint and fixes errors                                               |
+| lint:styled       | runs stylelint and lints CSS-IN-JS                                            |
 | gen:sitemap       | generates sitemap                                                             |
 | gen:theme-typings | generates theme typings for Chakra UI theme                                   |
 | cy:test           | runs cypress tests                                                            |
@@ -85,12 +95,12 @@ project
 |   prettier.config.js
 |   package.json
 |   README.md
-└───api
-└───components
-└───hooks
-└───pages
-└───theme
-
+└───src
+|   └───requests
+|   └───components
+|   └───hooks
+|   └───pages
+|   └───theme
 ```
 
 ### Detailed Structure
@@ -106,70 +116,71 @@ project
 |   package.json
 |   README.md
 |
-└───api
-|   |   useMenuQuery.ts
+└───src
+|   └───api
+|   |   |   useMenuQuery.ts
+|   |   |   index.ts
+|   |   |   ...
+|   |
+|   └───components
+|   |   |
+|   │   └───common (all common, shared components)
+|   │   │   Anchors.tsx
+|   │   │   Typography.tsx
+|   │   │   Buttons.tsx
+|   │   │   Input.tsx
+|   │   │   Labels.tsx
+|   |   |   ...
+|   |   |
+|   │   └───pages (page specific components)
+|   |   │   └───Home
+|   |   |   │   |   Aside
+|   |   |   |   │   └───styled (Styled Components that are only used in Aside if required)
+|   |   |   │   |   |   AsideToggle.tsx
+|   |   |   │   |   |   Aside.tsx
+|   |   |   │   |   |   index.tsx
+|   |   |   │   |   |   ...
+|   |   |   │   |   |
+|   |   |   |   │   └───state (Recoil State if required)
+|   |   |   │   |   |   atoms.ts
+|   |   |   │   |   |   selectors.ts
+|   |   |   │   |   |
+|   |   |   |   │   ...etc
+|   |   |   |   │   index.tsx (export Aside, etc.)
+|   |   |   │
+|   │   │   MatchMedia.tsx
+|   │   │   Layout.tsx
+|   │   │   index.tsx
+|   │   │
+|   └───hooks
+|   │   │   useRequest.ts
+|   │   │   useTheForce.ts
+|   │   │   ...
+|   └───pages
+|   │   │   _app.tsx
+|   │   │   _document.tsx
+|   │   │   Contact.tsx
+|   │   │   News.tsx
+|   │   │   index.ts
+|   |   |   ...
+|   └───theme (Chakra)
+|   |   |
+|   │   └───foundations
+|   │       │   breakpoints.ts
+|   │       │   colors.ts
+|   │       │   fonts.ts
+|   │       │   ...
+|   |   |
+|   │   └───components
+|   │       │   anchors.ts
+|   │       │   buttons.ts
+|   │       │   ...
+|   |   |
+|   │   └───layers
+|   │       │   hover.ts
+|   │       │   focus.ts
+|   │       │   ...
 |   |   index.ts
-|   |   ...
-|
-└───components
-|   |
-│   └───common (all common, shared components)
-│   │   Anchors.tsx
-│   │   Typography.tsx
-│   │   Buttons.tsx
-│   │   Input.tsx
-│   │   Labels.tsx
-|   |   ...
-|   |
-│   └───pages (page specific components)
-|   │   └───Home
-|   |   │   |   Aside
-|   |   |   │   └───styled (Styled Components that are only used in Aside if required)
-|   |   │   |   |   AsideToggle.tsx
-|   |   │   |   |   Aside.tsx
-|   |   │   |   |   index.tsx
-|   |   │   |   |   ...
-|   |   │   |   |
-|   |   |   │   └───state (Recoil State if required)
-|   |   │   |   |   atoms.ts
-|   |   │   |   |   selectors.ts
-|   |   │   |   |
-|   |   |   │   ...etc
-|   |   |   │   index.tsx (export Aside, etc.)
-|   |   │
-│   │   MatchMedia.tsx
-│   │   Layout.tsx
-│   │   index.tsx
-│   │
-└───hooks
-│   │   useRequest.ts
-│   │   useTheForce.ts
-│   │   ...
-└───pages
-│   │   _app.tsx
-│   │   _document.tsx
-│   │   Contact.tsx
-│   │   News.tsx
-│   │   index.ts
-|   |   ...
-└───theme (Chakra)
-|   |
-│   └───foundations
-│       │   breakpoints.ts
-│       │   colors.ts
-│       │   fonts.ts
-│       │   ...
-|   |
-│   └───components
-│       │   anchors.ts
-│       │   buttons.ts
-│       │   ...
-|   |
-│   └───layers
-│       │   hover.ts
-│       │   focus.ts
-│       │   ...
-|   index.ts
 
 ```
 
