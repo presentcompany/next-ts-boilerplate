@@ -57,6 +57,7 @@ To get started:
 | lint              | runs next lint                                                                |
 | lint:fix          | runs next lint and fixes errors                                               |
 | lint:styled       | runs stylelint and lints CSS-IN-JS                                            |
+| lint:styled-fix   | runs stylelint and fixes CSS-IN-JS errors                                     |
 | gen:sitemap       | generates sitemap                                                             |
 | gen:theme-typings | generates theme typings for Chakra UI theme                                   |
 | cy:test           | runs cypress tests                                                            |
