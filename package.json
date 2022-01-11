@@ -22,6 +22,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:styled": "stylelint ./src/**/*.{css,scss,js,ts,tsx}",
+    "lint:styled-fix": "stylelint ./src/**/*.{css,scss,js,ts,tsx} --fix",
     "lint:fix": "next lint --fix",
     "export": "next export",
     "post-install": "yarn run gen:theme-typings",
