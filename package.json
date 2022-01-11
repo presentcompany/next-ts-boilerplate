@@ -12,8 +12,6 @@
     ]
   },
   "scripts": {
-    "prepare-husky": "npx husky install",
-    "add-husky": "npx husky add .husky/pre-commit 'npx --no-install lint-staged'",
     "husky:init": "husky install",
     "husky:prepare": "npx husky add .husky/pre-commit 'yarn lint-staged'",
     "pre-commit": "lint-staged",
