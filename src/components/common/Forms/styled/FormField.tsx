@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { FormControl, FormControlProps } from '@chakra-ui/react';
+import { FormControl } from '@chakra-ui/react';
+import type { FormControlProps } from '@chakra-ui/react';
 
 const FormField = styled(FormControl)<FormControlProps>`
   > input[data-invalid] {

@@ -1,6 +1,9 @@
 import React from 'react';
-import { Link, LinkProps } from '@chakra-ui/react';
-import { default as NextLink, LinkProps as NextLinkProps } from 'next/link';
+import { Link } from '@chakra-ui/react';
+import { default as NextLink } from 'next/link';
+
+import type { LinkProps } from '@chakra-ui/react';
+import type { LinkProps as NextLinkProps } from 'next/link';
 
 type AnchorLinkProps = {
   children: React.ReactNode;

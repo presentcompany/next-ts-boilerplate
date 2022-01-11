@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
-import { Input, InputProps } from '@chakra-ui/react';
+import { Input } from '@chakra-ui/react';
 import { theme } from '@/theme/index';
+
+import type { InputProps } from '@chakra-ui/react';
 
 const InputField = styled(Input)<InputProps>`
   color: ${theme.colors.black};

@@ -1,13 +1,12 @@
-import NextDocument, {
-  Html,
-  Head,
-  Main,
-  NextScript,
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
+import { GA_TRACKING_ID } from '@/utils/analytics';
+
+import type {
   DocumentContext,
   DocumentProps,
   DocumentInitialProps
 } from 'next/document';
-import { GA_TRACKING_ID } from '@/utils/analytics';
+
 export default class Document extends NextDocument<DocumentProps | unknown> {
   static async getInitialProps(
     ctx: DocumentContext
@@ -17,6 +16,7 @@ export default class Document extends NextDocument<DocumentProps | unknown> {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
+          // eslint-disable-next-line react/display-name
           enhanceApp: (App) => (props) => <App {...props} />
         });
     } catch (error) {
@@ -36,6 +36,7 @@ export default class Document extends NextDocument<DocumentProps | unknown> {
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
+
           <script
             dangerouslySetInnerHTML={{
               __html: `window.dataLayer = window.dataLayer || [];
@@ -48,6 +49,7 @@ export default class Document extends NextDocument<DocumentProps | unknown> {
             }}
           />
         </Head>
+
         <body className="loading">
           <Main />
           <NextScript />

@@ -1,6 +1,9 @@
 import React from 'react';
-import { Container, ContainerProps } from '@chakra-ui/react';
-import { LayoutHead, LayoutHeadProps } from './LayoutHead';
+import { Container } from '@chakra-ui/react';
+import { LayoutHead } from './LayoutHead';
+
+import type { ContainerProps } from '@chakra-ui/react';
+import type { LayoutHeadProps } from './LayoutHead';
 
 type LayoutProps = {
   children: JSX.Element | JSX.Element[];

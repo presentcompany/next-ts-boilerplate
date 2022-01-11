@@ -1,6 +1,5 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
-import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -10,6 +9,8 @@ import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import { GlobalStyles } from '@/components/common/index';
 import { theme } from '@/theme/index';
 import * as gtag from '@/utils/analytics';
+
+import type { AppProps } from 'next/app';
 
 const isServerSideRendered = () => {
   return typeof window === 'undefined';
@@ -81,4 +82,5 @@ function App({ Component, pageProps }: AppProps): React.ReactNode {
     </QueryClientProvider>
   );
 }
+
 export default App;

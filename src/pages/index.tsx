@@ -1,14 +1,16 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { GetStaticPropsResult } from 'next';
 import { QueryClient } from 'react-query';
-import { dehydrate, DehydratedState } from 'react-query/hydration';
+import { dehydrate } from 'react-query/hydration';
 import { Grid, Text } from '@chakra-ui/react';
 
 import { Layout } from '@/components/common/index';
 import { S, Searchbar } from '@/components/pages/Home/index';
 import { usePostsQuery, fetchPosts } from 'requests/index';
 import { selectSearchbarQuery } from '@/components/pages/Home/Searchbar/state/selectors';
+
+import type { GetStaticPropsResult } from 'next';
+import type { DehydratedState } from 'react-query/hydration';
 
 export default function Home(): React.ReactElement {
   const searchQuery = useRecoilValue(selectSearchbarQuery);

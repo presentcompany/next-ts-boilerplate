@@ -1,6 +1,8 @@
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import axios from 'axios';
 import qs from 'qs';
 import deepExtend from 'deep-extend';
+
+import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 export class Request {
   static DEFAULT_API_CONFIG = {

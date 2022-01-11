@@ -1,10 +1,18 @@
 import React from 'react';
 import { ErrorMessage } from '@hookform/error-message';
-import { useController, UseControllerProps } from 'react-hook-form';
-import { FormControlProps, FormLabelProps, InputProps } from '@chakra-ui/react';
+import { useController } from 'react-hook-form';
+
 import { isEmpty } from 'lodash';
 
 import { S } from './styled';
+
+import type { UseControllerProps } from 'react-hook-form';
+
+import type {
+  FormControlProps,
+  FormLabelProps,
+  InputProps
+} from '@chakra-ui/react';
 
 type TextFieldProps = {
   name: string;

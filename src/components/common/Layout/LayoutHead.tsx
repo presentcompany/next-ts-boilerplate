@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import { DefaultSeo, NextSeoProps } from 'next-seo';
+import SEO from '../../../../next-seo.config';
+import { DefaultSeo } from 'next-seo';
+import type { NextSeoProps } from 'next-seo';
 
 export type LayoutHeadProps = NextSeoProps;
 
@@ -20,6 +22,7 @@ export function LayoutHead({
       </Head>
 
       <DefaultSeo
+        {...SEO}
         title={title}
         titleTemplate={`${process.env.NEXT_PUBLIC_APP_NAME} - %s`}
         canonical={canonical}
