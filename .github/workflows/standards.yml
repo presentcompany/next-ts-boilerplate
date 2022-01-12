@@ -22,12 +22,14 @@ jobs:
       - name: Installing NPM packages
         run: yarn
 
-      - name: File(s) Changed
-        id: files_changed
+      - name: Get File(s) Changed
+        id: get_files_changed
         uses: trilom/file-changes-action@v1.2.3
         with:
           output: ' '
+
+      - name: Files(s) Changes
         run: |
-          echo Added files: ${{ steps.files_changed.outputs.files_added }}
-          echo Changed files: ${{ steps.files_changed.outputs.files_modified }}
-          echo Removed files: ${{ steps.files_changed.outputs.files_removed }}
+          echo Added files: ${{ steps.get_files_changed.outputs.files_added }}
+          echo Changed files: ${{ steps.get_files_changed.outputs.files_modified }}
+          echo Removed files: ${{ steps.get_files_changed.outputs.files_removed }}
