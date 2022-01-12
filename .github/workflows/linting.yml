@@ -1,4 +1,4 @@
-name: ES and Style Linting
+name: Linting
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setting Up Node.js ${{ matrix.node-version }}
+      - name: Setting Up Node.js
         uses: actions/setup-node@v2
           with:
             node-version: '16'
