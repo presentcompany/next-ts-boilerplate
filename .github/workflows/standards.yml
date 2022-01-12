@@ -15,13 +15,13 @@ jobs:
 
       - name: Setting Up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
-          with:
-            node-version: '16'
-            cache: 'yarn'
-      
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
       - name: Installing NPM packages
         run: yarn
-      
+
       - name: File(s) Changed
         id: files_changed
         uses: trilom/file-changes-action@v1.2.3
@@ -31,4 +31,3 @@ jobs:
           echo Added files: ${{ steps.files_changed.outputs.files_added }}
           echo Changed files: ${{ steps.files_changed.outputs.files_modified }}
           echo Removed files: ${{ steps.files_changed.outputs.files_removed }}
-
