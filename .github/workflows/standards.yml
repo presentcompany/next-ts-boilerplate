@@ -1,23 +1,34 @@
-name: Code Standards
+name: Linting
+
 on:
   push:
-    branches: [master, main, develop]
+    branches: [master]
   pull_request:
-    branches: [master, main, develop]
+    branches: [master]
+
 jobs:
-  eslint:
-    name: JS Code Standards
+  linting:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+
+      - name: Setting Up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+          with:
+            node-version: '16'
+            cache: 'yarn'
+      
+      - name: Installing NPM packages
+        run: yarn
+      
+      - name: File(s) Changed
+        id: files_changed
+        uses: trilom/file-changes-action@v1.2.3
         with:
-          node-version: '16'
-      - run: yarn
-      - uses: sibiraj-s/action-eslint@v1
-        with:
-          eslintArgs: '--quiet'
-          extensions: 'js, jsx, ts, tsx'
-          annotations: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          output: ' '
+        run: |
+          echo Added files: ${{ steps.files_changed.outputs.files_added }}
+          echo Changed files: ${{ steps.files_changed.outputs.files_modified }}
+          echo Removed files: ${{ steps.files_changed.outputs.files_removed }}
+
