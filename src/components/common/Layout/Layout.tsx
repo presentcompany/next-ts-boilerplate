@@ -10,7 +10,7 @@ type LayoutProps = {
 } & LayoutHeadProps &
   ContainerProps;
 
-export default function Layout({
+export function Layout({
   title,
   description,
   canonical,
@@ -19,7 +19,7 @@ export default function Layout({
   ...props
 }: LayoutProps): React.ReactElement {
   return (
-    <React.Fragment>
+    <>
       <LayoutHead
         title={title}
         description={description}
@@ -40,6 +40,6 @@ export default function Layout({
           {children}
         </Container>
       </main>
-    </React.Fragment>
+    </>
   );
 }

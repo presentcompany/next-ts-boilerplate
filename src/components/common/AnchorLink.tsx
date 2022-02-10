@@ -10,7 +10,7 @@ type AnchorLinkProps = {
 } & LinkProps &
   NextLinkProps;
 
-export default function AnchorLink({
+export function AnchorLink({
   children,
   href,
   variant = 'textLink',

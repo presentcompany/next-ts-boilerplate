@@ -1,4 +1,4 @@
-export { default as Layout } from './Layout';
+export { Layout } from './Layout';
 export { TextField } from './Forms';
-export { default as GlobalStyles } from './GlobalStyles';
-export { default as AnchorLink } from './AnchorLink';
+export { GlobalStyles } from './GlobalStyles';
+export { AnchorLink } from './AnchorLink';
