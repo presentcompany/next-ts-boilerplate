@@ -1,10 +1,14 @@
 import React from 'react';
 import { ErrorMessage } from '@hookform/error-message';
 import { useController } from 'react-hook-form';
-
 import { isEmpty } from 'lodash';
+import styled from '@emotion/styled';
+import { FormHelperText } from '@chakra-ui/react';
 
-import { S } from './styled';
+import { Input } from './Input';
+import { Label } from './Label';
+import { FormField } from './FormField';
+import { theme } from '@/theme/index';
 
 import type { UseControllerProps } from 'react-hook-form';
 
@@ -27,7 +31,7 @@ type TextFieldProps = {
   FormControlProps &
   UseControllerProps;
 
-export default function TextField({
+export function TextField({
   id,
   control,
   defaultValue,
@@ -77,11 +81,11 @@ export default function TextField({
   };
 
   return (
-    <S.FormField id={id} mb="16px" isInvalid={!isValid}>
-      <S.FieldLabel>
+    <FormField id={id} mb="16px" isInvalid={!isValid}>
+      <Label>
         {labelText}
 
-        <S.InputField
+        <Input
           id={id}
           ref={ref}
           className="text-input"
@@ -98,10 +102,16 @@ export default function TextField({
           errors={formState.errors ?? formState.errors}
           name={name}
           render={({ message }) => (
-            <S.FieldErrorMessage>{message}</S.FieldErrorMessage>
+            <FieldErrorMessage>{message}</FieldErrorMessage>
           )}
         />
-      </S.FieldLabel>
-    </S.FormField>
+      </Label>
+    </FormField>
   );
 }
+
+const FieldErrorMessage = styled(FormHelperText)`
+  font-size: 0.63rem;
+  text-transform: capitalize;
+  color: ${theme.colors.orange['100']};
+`;

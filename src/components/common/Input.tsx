@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import { Input } from '@chakra-ui/react';
+import { Input as ChakraInput } from '@chakra-ui/react';
 import { theme } from '@/theme/index';
 
 import type { InputProps } from '@chakra-ui/react';
 
-const InputField = styled(Input)<InputProps>`
+export const Input = styled(ChakraInput)<InputProps>`
   color: ${theme.colors.black};
   font-size: 0.88rem;
   padding-left: 0;
@@ -28,5 +28,3 @@ const InputField = styled(Input)<InputProps>`
     box-shadow: none;
   }
 `;
-
-export default InputField;
