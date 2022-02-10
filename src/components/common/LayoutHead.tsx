@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import SEO from '../../../../next-seo.config';
+import SEO from '../../../next-seo.config';
 import { DefaultSeo } from 'next-seo';
 import type { NextSeoProps } from 'next-seo';
 

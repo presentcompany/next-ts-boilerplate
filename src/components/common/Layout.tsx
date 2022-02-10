@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container } from '@chakra-ui/react';
 import { LayoutHead } from './LayoutHead';
+import { Header } from './Header';
+import { Footer } from './Footer';
 
 import type { ContainerProps } from '@chakra-ui/react';
 import type { LayoutHeadProps } from './LayoutHead';
@@ -27,6 +29,8 @@ export function Layout({
         additionalMetaTags={additionalMetaTags}
       />
 
+      <Header />
+
       <main id="main">
         <Container
           display="flex"
@@ -40,6 +44,8 @@ export function Layout({
           {children}
         </Container>
       </main>
+
+      <Footer />
     </>
   );
 }
