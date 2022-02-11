@@ -25,7 +25,7 @@ export function Accordion({
   allowToggle,
   items
 }: TAccordionProps) {
-  if (items?.length > 0) {
+  if (!!items?.length) {
     return null;
   }
 
