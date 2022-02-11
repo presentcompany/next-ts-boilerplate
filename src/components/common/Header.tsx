@@ -3,20 +3,22 @@ import { Flex, Box, Text, Spacer, Button } from '@chakra-ui/react';
 
 export function Header() {
   return (
-    <Flex p="4">
-      <Box p="2">
-        <Text size="xs">{process.env.NEXT_PUBLIC_APP_NAME}</Text>
-      </Box>
+    <header>
+      <Flex p="4">
+        <Box p="2">
+          <Text size="xs">{process.env.NEXT_PUBLIC_APP_NAME}</Text>
+        </Box>
 
-      <Spacer />
+        <Spacer />
 
-      <Box>
-        <Button colorScheme="teal" mr="4">
-          Sign Up
-        </Button>
+        <Box>
+          <Button colorScheme="teal" mr="4">
+            Sign Up
+          </Button>
 
-        <Button colorScheme="teal">Log in</Button>
-      </Box>
-    </Flex>
+          <Button colorScheme="teal">Log in</Button>
+        </Box>
+      </Flex>
+    </header>
   );
 }
