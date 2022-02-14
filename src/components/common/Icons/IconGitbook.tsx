@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { AnchorLink } from '@/components/common';
 
-export function Gitbook() {
+export function IconGitbook() {
   return (
     <Box
       w={{ base: '25px', md: '48px' }}

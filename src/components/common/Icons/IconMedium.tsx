@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { AnchorLink } from '@/components/common';
 
-export function Medium() {
+export function IconMedium() {
   return (
     <Box
       w={{ base: '32px', md: '60px' }}

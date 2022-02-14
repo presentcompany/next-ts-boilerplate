@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { AnchorLink } from '@/components/common';
 
-export function Facebook() {
+export function IconFacebook() {
   return (
     <Box
       w={{ base: '18px', md: '34px' }}

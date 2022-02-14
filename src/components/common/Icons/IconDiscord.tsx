@@ -5,7 +5,7 @@ interface DiscordProps {
   isStickyFooter?: boolean;
 }
 
-export function Discord({ isStickyFooter = false }: DiscordProps) {
+export function IconDiscord({ isStickyFooter = false }: DiscordProps) {
   return (
     <Box
       w={isStickyFooter ? '30px' : { base: '23px', md: '43px' }}
