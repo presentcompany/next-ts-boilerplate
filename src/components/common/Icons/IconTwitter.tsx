@@ -1,18 +1,12 @@
 import { Box } from '@chakra-ui/react';
 import { AnchorLink } from '@/components/common';
 
-interface TwitterProps {
-  isStickyFooter?: boolean;
-}
-
-export function IconTwitter({ isStickyFooter }: TwitterProps) {
+export function IconTwitter() {
   return (
     <Box
-      w={isStickyFooter ? '28px' : { base: '20px', md: '38px' }}
+      w={{ base: '20px', md: '38px' }}
       color={'white'}
-      {...(isStickyFooter
-        ? { _groupHover: { color: '#01c6ce' } }
-        : { _hover: { color: '#01C6CE' } })}
+      _hover={{ color: '#01C6CE' }}
     >
       <AnchorLink href={'https://www.twitter.com/PerionDAO'} isExternal>
         <svg viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
