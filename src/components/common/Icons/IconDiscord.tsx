@@ -1,18 +1,12 @@
 import { Box } from '@chakra-ui/react';
 import { AnchorLink } from '@/components/common';
 
-interface DiscordProps {
-  isStickyFooter?: boolean;
-}
-
-export function IconDiscord({ isStickyFooter = false }: DiscordProps) {
+export function IconDiscord() {
   return (
     <Box
-      w={isStickyFooter ? '30px' : { base: '23px', md: '43px' }}
+      w={{ base: '23px', md: '43px' }}
       color={'white'}
-      {...(isStickyFooter
-        ? { _groupHover: { color: '#01c6ce' } }
-        : { _hover: { color: '#01c6ce' } })}
+      _hover={{ color: '#01c6ce' }}
     >
       <AnchorLink href={'https://discord.gg/perion'} isExternal>
         <svg viewBox="0 0 23 17" fill="none" xmlns="http://www.w3.org/2000/svg">
