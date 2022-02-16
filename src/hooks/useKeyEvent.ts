@@ -1,11 +1,11 @@
 import React from 'react';
 
-export interface UseKeyEventProps {
+export interface IUseKeyEventProps {
   callbackEvent: () => void;
   targetKey: keyof typeof keyMaps;
 }
 
-export function useKeyEvent({ callbackEvent, targetKey }: UseKeyEventProps) {
+export function useKeyEvent({ callbackEvent, targetKey }: IUseKeyEventProps) {
   const handleUserKeyPress = React.useCallback(
     (event) => {
       const { keyCode } = event;
