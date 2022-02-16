@@ -2,24 +2,24 @@ import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { FormControl, Text } from '@chakra-ui/react';
 
-type RecaptchaProps = {
+type TRecaptchaProps = {
   id?: string;
   errorMsg?: string;
-  // eslint-disable-next-line no-unused-vars
   onChange?: (token: string | null) => void;
 };
 
-export default function Recaptcha({
+export function Recaptcha({
   id,
   onChange,
   errorMsg
-}: RecaptchaProps): React.ReactElement {
+}: TRecaptchaProps): React.ReactElement {
   const RECAPTCHA_API_KEY =
     process?.env?.NEXT_PUBLIC_GOOGLE_RECAPTCHA_API || '';
 
   return (
     <FormControl id={id} mb="2em" className={'g-recaptcha'}>
       <ReCAPTCHA sitekey={RECAPTCHA_API_KEY} onChange={onChange} />
+
       {!!errorMsg && (
         <Text fontSize="0.63rem" textTransform="capitalize" color="orange.100">
           {errorMsg}

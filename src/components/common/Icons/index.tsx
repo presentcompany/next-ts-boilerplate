@@ -1,0 +1,11 @@
+export { IconDiscord } from './IconDiscord';
+export { IconFacebook } from './IconFacebook';
+export { IconGitbook } from './IconGitbook';
+export { IconMedium } from './IconMedium';
+export { IconMute } from './IconMute';
+export { IconNextTrack } from './IconNextTrack';
+export { IconPause } from './IconPause';
+export { IconPlay } from './IconPlay';
+export { IconPrevTrack } from './IconPrevTrack';
+export { IconVolume } from './IconVolume';
+export { IconYouTube } from './IconYouTube';
