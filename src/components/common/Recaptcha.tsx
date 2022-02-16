@@ -2,7 +2,7 @@ import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { FormControl, Text } from '@chakra-ui/react';
 
-type RecaptchaProps = {
+type TRecaptchaProps = {
   id?: string;
   errorMsg?: string;
   onChange?: (token: string | null) => void;
@@ -12,7 +12,7 @@ export function Recaptcha({
   id,
   onChange,
   errorMsg
-}: RecaptchaProps): React.ReactElement {
+}: TRecaptchaProps): React.ReactElement {
   const RECAPTCHA_API_KEY =
     process?.env?.NEXT_PUBLIC_GOOGLE_RECAPTCHA_API || '';
 

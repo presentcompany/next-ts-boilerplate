@@ -5,7 +5,7 @@ import { default as NextLink } from 'next/link';
 import type { LinkProps } from '@chakra-ui/react';
 import type { LinkProps as NextLinkProps } from 'next/link';
 
-type AnchorLinkProps = {
+type TAnchorLinkProps = {
   children: React.ReactNode;
 } & LinkProps &
   NextLinkProps;
@@ -16,7 +16,7 @@ export function AnchorLink({
   variant = 'textLink',
   isExternal = false,
   ...props
-}: AnchorLinkProps): React.ReactElement {
+}: TAnchorLinkProps): React.ReactElement {
   return (
     <NextLink href={href}>
       <Link variant={variant} isExternal={isExternal} {...props}>

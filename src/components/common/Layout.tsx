@@ -5,11 +5,11 @@ import { Header } from './Header';
 import { Footer } from './Footer';
 
 import type { ContainerProps } from '@chakra-ui/react';
-import type { LayoutHeadProps } from './LayoutHead';
+import type { TLayoutHeadProps } from './LayoutHead';
 
-type LayoutProps = {
+type TLayoutProps = {
   children: JSX.Element | JSX.Element[];
-} & LayoutHeadProps &
+} & TLayoutHeadProps &
   ContainerProps;
 
 export function Layout({
@@ -19,7 +19,7 @@ export function Layout({
   additionalMetaTags = [],
   children,
   ...props
-}: LayoutProps): React.ReactElement {
+}: TLayoutProps): React.ReactElement {
   return (
     <>
       <LayoutHead
