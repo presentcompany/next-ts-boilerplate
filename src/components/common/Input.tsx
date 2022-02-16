@@ -10,7 +10,7 @@ export const Input = styled(ChakraInput)<InputProps>`
   padding-left: 0;
   border: none;
   border-radius: 0;
-  border-bottom: 1px dashed ${theme.colors.black};
+  border-bottom: 1px dashed ${theme.colors.brand[500]};
   appearance: none;
   outline: none;
   box-shadow: none !important;

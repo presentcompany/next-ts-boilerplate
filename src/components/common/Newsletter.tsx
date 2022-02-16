@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flex, Button } from '@chakra-ui/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import Joi from 'joi';
 import { joiResolver } from '@hookform/resolvers/joi';
@@ -7,9 +8,7 @@ import MailchimpSubscribe, {
   DefaultFormFields
 } from 'react-mailchimp-subscribe';
 
-import { Flex } from '@chakra-ui/react';
 import { validator } from '@/utils/formValidationSchema';
-
 import { LabeledTextField } from './LabeledTextField';
 
 export function Newsletter() {
@@ -47,7 +46,7 @@ export function Newsletter() {
               )}
 
               {!hasSignedUp && (
-                <Flex>
+                <Flex alignItems="center">
                   <LabeledTextField
                     name="newsletter_email"
                     placeholder="Enter your email address"
@@ -55,9 +54,9 @@ export function Newsletter() {
                     labelText="Sign up to our newsletter"
                   />
 
-                  <button type="submit" disabled={hasSignedUp}>
+                  <Button type="submit" disabled={hasSignedUp}>
                     Submit
-                  </button>
+                  </Button>
                 </Flex>
               )}
             </form>

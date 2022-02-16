@@ -40,8 +40,11 @@ export function LabeledTextField({
 }: TTextFieldProps): React.ReactElement {
   return (
     <ConnectForm>
-      {({ register, formState: { errors, isValid } }: TConnectFormCallback) => (
-        <FormField id={id} mb="16px" isInvalid={!isValid}>
+      {({
+        register,
+        formState: { errors, isDirty, isValid }
+      }: TConnectFormCallback) => (
+        <FormField id={id} mb="16px" isInvalid={isDirty && !isValid}>
           <Label>
             {labelText}
 
