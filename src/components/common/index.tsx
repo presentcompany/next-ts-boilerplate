@@ -1,8 +1,10 @@
 export { AnchorLink } from './AnchorLink';
+export { AudioPlayer } from './AudioPlayer';
 export { FormField } from './FormField';
 export { Label } from './Label';
 export { LabeledTextField } from './LabeledTextField';
 export { Layout } from './Layout';
 export { GlobalStyles } from './GlobalStyles';
 export { Input } from './Input';
+export { Newsletter } from './Newsletter';
 export { Recaptcha } from './Recaptcha';
