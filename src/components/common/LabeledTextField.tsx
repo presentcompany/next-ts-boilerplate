@@ -20,7 +20,7 @@ import type {
 type TTextFieldProps = {
   id?: string;
   name: string;
-  labelText: string;
+  labelText?: string;
   type?: 'text' | 'email' | 'url' | 'search' | 'password';
 } & InputProps &
   FormLabelProps &
@@ -46,7 +46,7 @@ export function LabeledTextField({
       }: TConnectFormCallback) => (
         <FormField id={id} mb="16px" isInvalid={isDirty && !isValid}>
           <Label>
-            {labelText}
+            {!!labelText && labelText}
 
             <Input
               id={id || name}
