@@ -32,15 +32,7 @@ export function Layout({
       <Header />
 
       <main id="main">
-        <Container
-          display="flex"
-          flexDir="column"
-          __css={{
-            paddingRight: '1em',
-            paddingLeft: '1em'
-          }}
-          {...props}
-        >
+        <Container maxW="container.xl" {...props}>
           {children}
         </Container>
       </main>
