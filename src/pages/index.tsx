@@ -4,7 +4,7 @@ import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
 import { Grid, Text } from '@chakra-ui/react';
 
-import { Layout } from '@/components/common/index';
+import { Layout, SocialBanner } from '@/components/common/index';
 import { S } from '@/components/pages/Home/index';
 import { usePostsQuery, fetchPosts } from 'requests/index';
 import { selectSearchbarQuery } from '@/components/pages/Home/Searchbar/state/selectors';
@@ -33,6 +33,8 @@ export default function Home(): React.ReactElement {
             </S.Post>
           ))}
       </Grid>
+
+      <SocialBanner />
     </Layout>
   );
 }
