@@ -8,7 +8,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer>
+    <Box as="footer" p={6} background="gray.200">
       <Container maxW="container.xl">
         <Flex py="4">
           <Newsletter />
@@ -29,6 +29,6 @@ export function Footer() {
           </Box>
         </Flex>
       </Container>
-    </footer>
+    </Box>
   );
 }
