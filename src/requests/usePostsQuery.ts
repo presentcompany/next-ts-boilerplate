@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from 'axios';
 import { useQuery } from 'react-query';
 import { endpoints } from './endpoints';
 
-export type Post = {
+export type TPost = {
   id: number;
   userId: number;
   title: string;
@@ -11,7 +11,7 @@ export type Post = {
 };
 
 export function fetchPosts(params: AxiosRequestConfig = {}) {
-  return Request.get<Post[], Error>(endpoints.POSTS, params);
+  return Request.get<TPost[], Error>(endpoints.POSTS, params);
 }
 
 export function usePostsQuery(searchQuery = '') {
@@ -21,7 +21,7 @@ export function usePostsQuery(searchQuery = '') {
     }
   };
 
-  return useQuery<Post[], Error>(
+  return useQuery<TPost[], Error>(
     ['posts', searchQuery],
     fetchPosts(requestConfig)
   );

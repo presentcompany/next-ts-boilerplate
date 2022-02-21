@@ -5,7 +5,7 @@ import { dehydrate } from 'react-query/hydration';
 import { Grid, Text } from '@chakra-ui/react';
 
 import { Layout, SocialBanner } from '@/components/common/index';
-import { S } from '@/components/pages/Home/index';
+import { S, Searchbar } from '@/components/pages/Home/index';
 import { usePostsQuery, fetchPosts } from 'requests/index';
 import { selectSearchbarQuery } from '@/components/pages/Home/Searchbar/state/selectors';
 
@@ -22,6 +22,8 @@ export default function Home(): React.ReactElement {
       className="home-index"
       description={'My Page Description'}
     >
+      <Searchbar />
+
       <Grid
         templateColumns={[
           'repeat(1, 1fr)',
