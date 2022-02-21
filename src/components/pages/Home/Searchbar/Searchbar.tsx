@@ -3,9 +3,9 @@ import { useSetRecoilState } from 'recoil';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { searchbarQueryState } from './state/atoms';
-import { TextField } from '@/components/common/index';
+import { LabeledTextField } from '@/components/common/index';
 
-export default function Searchbar(): JSX.Element {
+export function Searchbar(): JSX.Element {
   const setSearchQuery = useSetRecoilState(searchbarQueryState);
 
   const form = useForm({
@@ -19,13 +19,19 @@ export default function Searchbar(): JSX.Element {
   return (
     <FormProvider {...form}>
       <form noValidate>
-        <TextField
+        <LabeledTextField
           id="searchbar"
           name="searchbar"
           type="search"
           labelText="Search"
-          onChangeField={onChange}
-          control={form.control}
+          onChange={
+            onChange as
+              | (React.ChangeEventHandler<HTMLInputElement> &
+                  React.FormEventHandler<HTMLLabelElement> &
+                  React.FormEventHandler<HTMLDivElement> &
+                  ((event: any) => void))
+              | undefined
+          }
         />
       </form>
     </FormProvider>

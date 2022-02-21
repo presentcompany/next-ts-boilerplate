@@ -7,5 +7,6 @@ export { IconNextTrack } from './IconNextTrack';
 export { IconPause } from './IconPause';
 export { IconPlay } from './IconPlay';
 export { IconPrevTrack } from './IconPrevTrack';
+export { IconTwitter } from './IconTwitter';
 export { IconVolume } from './IconVolume';
 export { IconYouTube } from './IconYouTube';
