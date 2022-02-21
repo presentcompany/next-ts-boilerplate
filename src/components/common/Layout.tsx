@@ -32,7 +32,15 @@ export function Layout({
       <Header />
 
       <main id="main">
-        <Container maxW="container.xl" {...props}>
+        <Container
+          maxW={[
+            'container.sm',
+            'container.md',
+            'container.lg',
+            'container.xl'
+          ]}
+          {...props}
+        >
           {children}
         </Container>
       </main>
