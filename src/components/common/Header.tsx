@@ -1,9 +1,17 @@
 import React from 'react';
-import { Box, Button, Container, Flex, Spacer, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  Flex,
+  Spacer,
+  Text
+} from '@chakra-ui/react';
 
 export function Header() {
   return (
-    <header>
+    <Box as="header" mb="6">
       <Container maxW="container.xl">
         <Flex py="4">
           <Box py="2">
@@ -21,6 +29,8 @@ export function Header() {
           </Box>
         </Flex>
       </Container>
-    </header>
+
+      <Divider />
+    </Box>
   );
 }
