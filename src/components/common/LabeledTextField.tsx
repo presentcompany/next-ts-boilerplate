@@ -9,7 +9,12 @@ import { FormField } from './FormField';
 import { theme } from '@/theme/index';
 import { ConnectForm } from './ConnectForm';
 
-import type { FieldValues, FormState, UseFormRegister } from 'react-hook-form';
+import type {
+  FieldValues,
+  FormState,
+  UseFormRegister,
+  RegisterOptions
+} from 'react-hook-form';
 
 import type {
   FormControlProps,
@@ -24,7 +29,8 @@ type TTextFieldProps = {
   type?: 'text' | 'email' | 'url' | 'search' | 'password';
 } & InputProps &
   FormLabelProps &
-  FormControlProps;
+  FormControlProps &
+  RegisterOptions;
 
 type TConnectFormCallback = {
   formState: FormState<FieldValues>;
@@ -32,10 +38,19 @@ type TConnectFormCallback = {
 };
 
 export function LabeledTextField({
+  disabled,
   id,
   labelText,
   name,
+  onChange,
+  onBlur,
+  pattern,
   placeholder,
+  validate,
+  value,
+  valueAsNumber,
+  valueAsDate,
+  shouldUnregister,
   type = 'text'
 }: TTextFieldProps): React.ReactElement {
   return (
@@ -52,7 +67,17 @@ export function LabeledTextField({
               id={id || name}
               type={type}
               placeholder={placeholder}
-              {...register(name)}
+              {...register(name, {
+                disabled,
+                onChange,
+                onBlur,
+                pattern,
+                shouldUnregister,
+                value,
+                validate,
+                valueAsNumber,
+                valueAsDate
+              })}
             />
 
             <ErrorMessage
