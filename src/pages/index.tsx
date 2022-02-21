@@ -22,7 +22,15 @@ export default function Home(): React.ReactElement {
       className="home-index"
       description={'My Page Description'}
     >
-      <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+      <Grid
+        templateColumns={[
+          'repeat(1, 1fr)',
+          'repeat(2, 1fr)',
+          'repeat(4, 1fr)',
+          'repeat(5, 1fr)'
+        ]}
+        gap={6}
+      >
         {!!posts?.data?.length &&
           posts.data.map(({ title, body, id }) => (
             <S.Post key={id}>
