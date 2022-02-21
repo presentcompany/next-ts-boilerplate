@@ -8,3 +8,4 @@ export { GlobalStyles } from './GlobalStyles';
 export { Input } from './Input';
 export { Newsletter } from './Newsletter';
 export { Recaptcha } from './Recaptcha';
+export { SocialBanner } from './SocialBanner';
