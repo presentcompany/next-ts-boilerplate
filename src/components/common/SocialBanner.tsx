@@ -20,7 +20,8 @@ export function SocialBanner() {
       position="relative"
       left="50%"
       right="50%"
-      mx="-50vw"
+      ml="-51vw"
+      mr="-50vw"
       minH="240px"
     >
       <Text pb={4} color="white">
