@@ -125,6 +125,7 @@ project
 |   └───components
 |   └───hooks
 |   └───pages
+|   └───state
 |   └───theme
 ```
 
@@ -142,11 +143,6 @@ project
 |   README.md
 |
 └───src
-|   └───api
-|   |   |   useMenuQuery.ts
-|   |   |   index.ts
-|   |   |   ...
-|   |
 |   └───components
 |   |   |
 |   │   └───common (all common, shared components)
@@ -159,21 +155,10 @@ project
 |   |   |
 |   │   └───pages (page specific components)
 |   |   │   └───Home
-|   |   |   │   |   Aside
-|   |   |   |   │   └───styled (Styled Components that are only used in Aside if required)
-|   |   |   │   |   |   AsideToggle.tsx
-|   |   |   │   |   |   Aside.tsx
-|   |   |   │   |   |   index.tsx
-|   |   |   │   |   |   ...
-|   |   |   │   |   |
-|   |   |   |   │   └───state (Recoil State if required)
-|   |   |   │   |   |   atoms.ts
-|   |   |   │   |   |   selectors.ts
-|   |   |   │   |   |
-|   |   |   |   │   ...etc
-|   |   |   |   │   index.tsx (export Aside, etc.)
+|   |   |   │   |   Aside.tsx
+|   |   |   │   |   Article.tsx
+|   |   |   │   |   ...
 |   |   |   │
-|   │   │   MatchMedia.tsx
 |   │   │   Layout.tsx
 |   │   │   index.tsx
 |   │   │
@@ -188,6 +173,16 @@ project
 |   │   │   News.tsx
 |   │   │   index.ts
 |   |   |   ...
+|   └───requests (formerly ./api, renamed to prevent confusion with native NextJS api dir)
+|   │       │   endpoints.ts (constants for APIs)
+|   │       │   request.ts (actual request utility that makes request)
+|   │       │   postsQuery.ts (consists of the fetch or other async request functions and or hook)
+|   │       │   ...
+|   └───state (Recoil)
+|   │   └─── posts (entity name)
+|   │       │   atoms.ts
+|   │       │   selectors.ts
+|   │       │   ...
 |   └───theme (Chakra)
 |   |   |
 |   │   └───foundations
@@ -221,11 +216,11 @@ Chakra allows for inline styling for components but at times, styles can grow fa
 import styled from '@emotion/styled';
 import AnchorLink from '../../AnchorLink';
 
-type NavOptionAnchorProps = {
+type TNavOptionAnchorProps = {
   selected?: boolean;
 };
 
-const NavOptionAnchor = styled(AnchorLink)<NavOptionAnchorProps>`
+export const NavOptionAnchor = styled(AnchorLink)<TNavOptionAnchorProps>`
   position: relative;
 
   &:hover {
@@ -244,11 +239,11 @@ const NavOptionAnchor = styled(AnchorLink)<NavOptionAnchorProps>`
     transition: height 250ms ease-out;
   }
 `;
-
-export default NavOptionAnchor;
 ```
 
-Naming conventions would be the same as for React components eg. pascal case with and extention of tsx. All Styled Components must be with parent named "S" to signify that it is a Styled Component and also for tree-shaking purposes. To do this, create an export barrel (eg. index.tsx) and export them like so:
+Naming conventions would be the same as for React components eg. pascal case with and extention of tsx.
+
+Alternatively, Styled Components can be with a parent named "S" to signify that it is a Styled Component and also for tree-shaking purposes. To do this, create an export barrel (eg. index.tsx) and export them like so:
 
 ```ts
 import NavOptionContainer from './NavOptionContainer';
