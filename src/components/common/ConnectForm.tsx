@@ -1,9 +1,20 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import type { UseFormReturn, FieldValues } from 'react-hook-form';
 
-type TConnectFormProps = {
+import type {
+  FieldValues,
+  FormState,
+  UseFormRegister,
+  UseFormReturn
+} from 'react-hook-form';
+
+export type TConnectFormProps = {
   children(props: UseFormReturn<FieldValues, object>): React.ReactElement;
+};
+
+export type TConnectFormCallback = {
+  formState: FormState<FieldValues>;
+  register: UseFormRegister<FieldValues>;
 };
 
 export function ConnectForm({ children }: TConnectFormProps) {
