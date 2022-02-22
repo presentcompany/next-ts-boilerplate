@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex } from '@chakra-ui/layout';
 import Slider from 'rc-slider';
 import styled from '@emotion/styled';
-import { IconMute, IconVolume } from '../Icons';
+import { IconMute, IconVolume } from './Icons';
 
 type TAudioPlayerVolumeControlProps = {
   volume: number;
