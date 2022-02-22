@@ -1,5 +1,6 @@
 export { AnchorLink } from './AnchorLink';
 export { AudioPlayer } from './AudioPlayer';
+export { Form } from './Form';
 export { FormField } from './FormField';
 export { Label } from './Label';
 export { LabeledTextField } from './LabeledTextField';

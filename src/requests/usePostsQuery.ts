@@ -14,15 +14,6 @@ export function fetchPosts(params: AxiosRequestConfig = {}) {
   return Request.get<TPost[], Error>(endpoints.POSTS, params);
 }
 
-export function usePostsQuery(searchQuery = '') {
-  const requestConfig = {
-    params: {
-      ...(!!searchQuery && { title: searchQuery })
-    }
-  };
-
-  return useQuery<TPost[], Error>(
-    ['posts', searchQuery],
-    fetchPosts(requestConfig)
-  );
+export function usePostsQuery() {
+  return useQuery<TPost[], Error>(['posts'], fetchPosts());
 }

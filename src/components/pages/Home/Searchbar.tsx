@@ -2,7 +2,7 @@ import React from 'react';
 import { useSetRecoilState } from 'recoil';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { searchbarQueryState } from './state/atoms';
+import { searchbarQueryState } from '@/state/searchBar/atoms';
 import { LabeledTextField } from '@/components/common/index';
 
 export function Searchbar(): JSX.Element {

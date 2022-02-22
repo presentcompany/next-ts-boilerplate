@@ -1,20 +1,29 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
-import { Grid, Text } from '@chakra-ui/react';
+import { Flex, Grid, Text } from '@chakra-ui/react';
 
 import { Layout, SocialBanner } from '@/components/common/index';
-import { S, Searchbar } from '@/components/pages/Home/index';
+import { Post, Searchbar } from '@/components/pages/Home/index';
 import { usePostsQuery, fetchPosts } from 'requests/index';
-import { selectSearchbarQuery } from '@/components/pages/Home/Searchbar/state/selectors';
+import { postsState } from '@/state/posts/atoms';
+import { selectPostsByQuery } from '@/state/posts/selectors';
+import { selectSearchbarQuery } from '@/state/searchBar/selectors';
 
 import type { GetStaticPropsResult } from 'next';
 import type { DehydratedState } from 'react-query/hydration';
+import type { TPost } from 'requests/index';
 
 export default function Home(): React.ReactElement {
   const searchQuery = useRecoilValue(selectSearchbarQuery);
-  const posts = usePostsQuery(searchQuery);
+  const setPostsState = useSetRecoilState(postsState);
+  const posts = useRecoilValue(selectPostsByQuery);
+  const postsResponse = usePostsQuery();
+
+  React.useEffect(() => {
+    setPostsState(postsResponse?.data as TPost[]);
+  }, [postsResponse]);
 
   return (
     <Layout
@@ -33,15 +42,32 @@ export default function Home(): React.ReactElement {
         ]}
         gap={6}
       >
-        {!!posts?.data?.length &&
-          posts.data.map(({ title, body, id }) => (
-            <S.Post key={id}>
+        {!!posts?.length &&
+          posts.map(({ title, body, id }) => (
+            <Post key={id}>
               <Text as="h2" fontWeight={900} color="brand.500">
                 {title}
               </Text>
               <p>{body}</p>
-            </S.Post>
+            </Post>
           ))}
+
+        {!posts?.length && (
+          <Flex
+            width="100vw"
+            minHeight="50vh"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text>
+              Search term{' '}
+              <strong>
+                <em>"{searchQuery}"</em>
+              </strong>{' '}
+              yielded no results.
+            </Text>
+          </Flex>
+        )}
       </Grid>
 
       <SocialBanner />
