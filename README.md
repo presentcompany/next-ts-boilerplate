@@ -163,7 +163,7 @@ project
 |   │   │   index.tsx
 |   │   │
 |   └───hooks
-|   │   │   useRequest.ts
+|   │   │   useKeyEvent.ts
 |   │   │   useTheForce.ts
 |   │   │   ...
 |   └───pages
@@ -242,6 +242,31 @@ export const NavOptionAnchor = styled(AnchorLink)<TNavOptionAnchorProps>`
 ```
 
 Naming conventions would be the same as for React components eg. pascal case with and extention of tsx.
+
+Ideally, a flatter file structure is preferred where applicable where both the React component and related Styled Components live together in a single file.
+
+```ts
+// MyComponent.tsx
+
+import styled from 'styled-components`;
+
+export function MyComponent() {
+  return (
+    <MyContainer>
+      <MyCustomText>Lorem Ipsum Dolor Sit Amet</MyCustomText>
+    </MyContainer>
+  )
+}
+
+const MyContainer = styled.div`
+  max-width: 1080px;
+  width: 100%;
+`;
+
+const MyCustomText = styled.p`
+  color: purple;
+`;
+```
 
 Alternatively, Styled Components can be with a parent named "S" to signify that it is a Styled Component and also for tree-shaking purposes. To do this, create an export barrel (eg. index.tsx) and export them like so:
 
