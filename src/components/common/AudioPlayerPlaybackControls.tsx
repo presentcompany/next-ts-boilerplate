@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Grid } from '@chakra-ui/layout';
-import { IconNextTrack, IconPrevTrack, IconPlay, IconPause } from '../Icons';
+import { IconNextTrack, IconPrevTrack, IconPlay, IconPause } from './Icons';
 
 type TAudioPlayerPlaybackControlsProps = {
   handlePausePlay: (e: React.MouseEvent<HTMLButtonElement>) => void;
