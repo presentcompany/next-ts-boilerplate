@@ -292,6 +292,48 @@ Where after, you can use in your Functional Component like so:
 ...
 ```
 
+### Forms
+
+Forms are using React Hook Form as base hence included in the components directory is ConnectForm in order to access the Form's context. Submission error handling is included and the error can be accessed through the custom property `submissionError` via the form's context. You can display the submission error on the form like so:
+
+```ts
+<Form>
+  <LabeledTextField
+    name="email"
+    labelText="Email"
+    placeholder="Email"
+    type="email"
+  />
+
+  <ConnectForm>
+    {({
+      submissionError,
+      formState: { errors, isDirty, isValid, isSubmitSuccessful }
+    }: TConnectFormCallback) => {
+      return (
+        <>
+          <div role="alert" style={{ color: 'red' }}>
+            {submissionError}
+          </div>
+
+          <div>
+            <button type="submit" disabled={isSubmitSuccessful}>
+              Login
+            </button>
+
+            <div>
+              <Link href={Routes.ForgotPasswordPage()}>
+                <a>Forgot your password?</a>
+              </Link>
+            </div>
+          </div>
+        </>
+      );
+    }}
+  </ConnectForm>
+</Form>
+```
+
 ### React Query
 
 For tips on typing React Query, you can refer to this article [React Query And Typescript](https://tkdodo.eu/blog/react-query-and-type-script).
