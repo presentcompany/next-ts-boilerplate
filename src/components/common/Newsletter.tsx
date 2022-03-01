@@ -32,7 +32,7 @@ export function Newsletter() {
         return (
           <Form
             config={{ resolver: joiResolver(validationSchema) }}
-            onSubmitForm={onSubmit(subscribe)}
+            onSubmitForm={onSubmit(subscribe) as any}
           >
             {isMailchimpSubmissionError && (
               <div>Failed to submit. Please try again later.</div>
