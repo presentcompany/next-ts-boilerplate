@@ -5,7 +5,8 @@ module.exports = {
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
-    'prettier'
+    'prettier',
+    'plugin:storybook/recommended'
   ],
   rules: {
     'no-unused-vars': 'error'
