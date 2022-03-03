@@ -16,9 +16,9 @@ export function Newsletter() {
   });
 
   const onSubmit =
-    (enrollNewsletter: (props: DefaultFormFields) => void) => (data: any) => {
-      if (!!data?.newsletter_email) {
-        enrollNewsletter({ EMAIL: data.newsletter_email });
+    (enrollNewsletter: (props: DefaultFormFields) => void) => (values: any) => {
+      if (!!values?.newsletter_email) {
+        enrollNewsletter({ EMAIL: values.newsletter_email });
       }
     };
 
