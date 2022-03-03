@@ -1,3 +1,4 @@
+export { Accordion } from './Accordion';
 export { AnchorLink } from './AnchorLink';
 export { AudioPlayer } from './AudioPlayer';
 export { Form } from './Form';
