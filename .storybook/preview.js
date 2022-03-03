@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   ChakraProvider,
   CSSReset,
@@ -7,11 +9,12 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 
-import React from 'react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withPerformance } from 'storybook-addon-performance';
+
 import { GlobalStyles } from '../src/components/common/GlobalStyles';
 import { theme } from '../src/theme';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 export const globalTypes = {
   direction: {
@@ -79,6 +82,9 @@ export const parameters = {
       a[1].kind === b[1].kind
         ? 0
         : a[1].id.localeCompare(b[1].id, undefined, { numeric: true })
+  },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS
   }
 };
 
