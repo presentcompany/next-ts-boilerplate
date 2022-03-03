@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Accordion as ChakraAccordion,
   AccordionItem as ChakraAccordionItem,
