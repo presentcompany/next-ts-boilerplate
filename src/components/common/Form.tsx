@@ -7,11 +7,13 @@ import type { FormProviderProps, UseFormProps } from 'react-hook-form';
 type TFormProps = {
   children: ReactNode;
   config: UseFormProps;
-  onSubmitForm: (values: any) => Promise<void | IOnSubmitResult>;
+  onSubmitForm: (
+    values: unknown
+  ) => Promise<void | Partial<IOnSubmitResult>> | void;
 };
 interface IOnSubmitResult {
   FORM_ERROR?: string;
-  [prop: string]: any;
+  [prop: string]: unknown;
 }
 
 type TFormProviderProps = FormProviderProps & {

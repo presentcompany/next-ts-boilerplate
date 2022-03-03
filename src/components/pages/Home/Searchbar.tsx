@@ -28,8 +28,7 @@ export function Searchbar(): JSX.Element {
             onChange as
               | (React.ChangeEventHandler<HTMLInputElement> &
                   React.FormEventHandler<HTMLLabelElement> &
-                  React.FormEventHandler<HTMLDivElement> &
-                  ((event: any) => void))
+                  React.FormEventHandler<HTMLDivElement>)
               | undefined
           }
         />

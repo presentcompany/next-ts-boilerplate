@@ -10,12 +10,12 @@ export function IconPause(): React.ReactElement {
       <path
         d="M0.900391 0.799896V9.8999"
         stroke="white"
-        stroke-width="0.770833"
+        strokeWidth="0.770833"
       />
       <path
         d="M5.10034 0.799896V9.8999"
         stroke="white"
-        stroke-width="0.770833"
+        strokeWidth="0.770833"
       />
     </svg>
   );
