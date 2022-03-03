@@ -6,9 +6,18 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@chakra-ui/storybook-addon'
+    '@storybook/addon-interactions'
   ],
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.filename) : true
+    }
+  },
   framework: '@storybook/react',
   core: {
     builder: 'webpack5'
@@ -33,14 +42,14 @@ module.exports = {
           ...config.resolve.alias,
           '@emotion/core': '@emotion/react',
           'emotion-theming': '@emotion/react',
-          '@/requests': DIR_PATH('..', 'src', 'requests'),
-          '@/components': DIR_PATH('..', 'src', 'components'),
-          '@/hooks': DIR_PATH('..', 'src', 'hooks'),
-          '@/pages': DIR_PATH('..', 'src', 'pages'),
-          '@/state': DIR_PATH('..', 'src', 'state'),
-          '@/theme': DIR_PATH('..', 'src', 'theme'),
-          '@/public': DIR_PATH('..', 'public'),
-          '@/utils': DIR_PATH('..', 'src', 'utils')
+          '@/requests': DIR_PATH('../src/requests'),
+          '@/components': DIR_PATH('../src/components'),
+          '@/hooks': DIR_PATH('../src/hooks'),
+          '@/pages': DIR_PATH('../src/pages'),
+          '@/state': DIR_PATH('../src/state'),
+          '@/theme': DIR_PATH('../src/theme'),
+          '@/public': DIR_PATH('../public'),
+          '@/utils': DIR_PATH('../src/utils')
         }
       }
     };
