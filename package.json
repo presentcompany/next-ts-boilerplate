@@ -34,10 +34,11 @@
     "cy:open": "cypress open",
     "test": "jest --config jest.config.js",
     "test:watch": "jest --config jest.config.js --watch",
-    "storybook": "start-storybook --ci -p 6006",
+    "storybook": "start-storybook --no-open -p 6006 ",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "^1.8.3",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
@@ -66,6 +67,7 @@
     "@axe-core/react": "^4.3.2",
     "@babel/core": "^7.17.2",
     "@chakra-ui/cli": "^1.8.1",
+    "@chakra-ui/storybook-addon": "^1.0.3",
     "@emotion/babel-plugin": "^11.7.2",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
