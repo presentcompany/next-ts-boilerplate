@@ -31,8 +31,9 @@ export function Accordion({
 
   return (
     <ChakraAccordion allowMultiple={allowMultiple} allowToggle={allowToggle}>
-      {items.map((item) => (
+      {items.map((item, i) => (
         <AccordionItem
+          key={i}
           title={item.title}
           content={item.content}
           ToggleIcon={item?.ToggleIcon}

@@ -14,7 +14,7 @@ export function useKeyEvent({ callbackEvent, targetKey }: IUseKeyEventProps) {
         callbackEvent();
       }
     },
-    [callbackEvent]
+    [callbackEvent, targetKey]
   );
 
   React.useEffect(() => {

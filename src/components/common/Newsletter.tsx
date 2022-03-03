@@ -16,23 +16,23 @@ export function Newsletter() {
   });
 
   const onSubmit =
-    (enrollNewsletter: (props: DefaultFormFields) => void) => (data: any) => {
-      if (!!data?.email) {
-        enrollNewsletter({ EMAIL: data.newsletter_email });
+    (enrollNewsletter: (props: DefaultFormFields) => void) => (values: any) => {
+      if (!!values?.newsletter_email) {
+        enrollNewsletter({ EMAIL: values.newsletter_email });
       }
     };
 
   return (
     <MailchimpSubscribe
       url={process?.env?.NEXT_PUBLIC_MAILCHIMP_SUBSCRIBE_URL || ''}
-      render={({ subscribe, status, message }) => {
+      render={({ subscribe, status }) => {
         const hasSignedUp = status === 'success';
         const isMailchimpSubmissionError = status === 'error';
 
         return (
           <Form
             config={{ resolver: joiResolver(validationSchema) }}
-            onSubmitForm={onSubmit(subscribe) as any}
+            onSubmitForm={onSubmit(subscribe)}
           >
             {isMailchimpSubmissionError && (
               <div>Failed to submit. Please try again later.</div>

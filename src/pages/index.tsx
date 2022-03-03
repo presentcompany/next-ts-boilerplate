@@ -62,7 +62,7 @@ export default function Home(): React.ReactElement {
             <Text>
               Search term{' '}
               <strong>
-                <em>"{searchQuery}"</em>
+                <em>&ldquo;{searchQuery}&rdquo;</em>
               </strong>{' '}
               yielded no results.
             </Text>
