@@ -1,10 +1,11 @@
 export { Accordion } from './Accordion';
 export { AnchorLink } from './AnchorLink';
 export { AudioPlayer } from './AudioPlayer';
+export { Footer } from './Footer';
 export { Form } from './Form';
 export { FormField } from './FormField';
 export { Label } from './Label';
-export { LabeledTextField } from './LabeledTextField';
+export { TextField } from './TextField';
 export { Layout } from './Layout';
 export { GlobalStyles } from './GlobalStyles';
 export { Input } from './Input';

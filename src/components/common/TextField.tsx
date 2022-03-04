@@ -29,7 +29,7 @@ type TTextFieldProps = {
   FormControlProps &
   RegisterOptions;
 
-export function LabeledTextField({
+export function TextField({
   disabled,
   id,
   labelText,

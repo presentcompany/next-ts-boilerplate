@@ -6,7 +6,7 @@ import MailchimpSubscribe from 'react-mailchimp-subscribe';
 
 import { validator } from '@/utils/formValidationSchema';
 import { Form } from './Form';
-import { LabeledTextField } from './LabeledTextField';
+import { TextField } from './TextField';
 
 import type { DefaultFormFields } from 'react-mailchimp-subscribe';
 
@@ -44,7 +44,7 @@ export function Newsletter() {
 
             {!hasSignedUp && (
               <Flex alignItems="center">
-                <LabeledTextField
+                <TextField
                   name="newsletter_email"
                   placeholder="Enter your email address"
                   type="email"
