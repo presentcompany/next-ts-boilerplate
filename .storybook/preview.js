@@ -1,12 +1,16 @@
 import React from 'react';
 
 import {
+  Box,
   ChakraProvider,
   CSSReset,
+  Container,
   Flex,
   IconButton,
   useColorMode,
-  useColorModeValue
+  useColorModeValue,
+  Text,
+  Divider
 } from '@chakra-ui/react';
 
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
@@ -34,18 +38,24 @@ const ColorModeToggleBar = () => {
   const nextMode = useColorModeValue('dark', 'light');
 
   return (
-    <Flex justify="flex-start" mb={4}>
-      <IconButton
-        size="md"
-        fontSize="lg"
-        aria-label={`Switch to ${nextMode} mode`}
-        variant="ghost"
-        color="current"
-        marginLeft="2"
-        onClick={toggleColorMode}
-        icon={<SwitchIcon />}
-      />
-    </Flex>
+    <Box mb={8}>
+      <Flex justify="space-between" mb={4} alignItems="center">
+        <Text fontSize="xs">Toggle Dark/Light Mode</Text>
+
+        <IconButton
+          size="xs"
+          fontSize="xs"
+          m={0}
+          aria-label={`Switch to ${nextMode} mode`}
+          variant="ghost"
+          color="current"
+          onClick={toggleColorMode}
+          icon={<SwitchIcon />}
+        />
+      </Flex>
+
+      <Divider />
+    </Box>
   );
 };
 
@@ -60,10 +70,20 @@ const withChakra = (StoryFn, context) => {
   return (
     <ChakraProvider theme={theme}>
       <div dir={dir} id="story-wrapper" style={{ minHeight: '100vh' }}>
-        <ColorModeToggleBar />
-        <GlobalStyles />
-        <CSSReset />
-        <StoryFn />
+        <Container
+          maxW={[
+            'container.sm',
+            'container.md',
+            'container.lg',
+            'container.xl'
+          ]}
+          p={8}
+        >
+          <ColorModeToggleBar />
+          <GlobalStyles />
+          <CSSReset />
+          <StoryFn />
+        </Container>
       </div>
     </ChakraProvider>
   );
