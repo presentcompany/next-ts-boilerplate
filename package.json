@@ -13,7 +13,6 @@
   },
   "scripts": {
     "husky:init": "husky install",
-    "husky:prepare": "npx husky add .husky/pre-commit 'yarn lint-staged'",
     "pre-commit": "lint-staged",
     "prettier:check": "prettier --check './src/**/*.{js,jsx,ts,tsx,json,md}'",
     "prettier:fix": "prettier --write './src/**/*.{js,jsx,ts,tsx,json,md}'",
