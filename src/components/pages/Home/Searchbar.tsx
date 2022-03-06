@@ -3,7 +3,7 @@ import { useSetRecoilState } from 'recoil';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { searchbarQueryState } from '@/state/searchBar/atoms';
-import { LabeledTextField } from '@/components/common/index';
+import { TextField } from '@/components/common/index';
 
 export function Searchbar(): JSX.Element {
   const setSearchQuery = useSetRecoilState(searchbarQueryState);
@@ -19,7 +19,7 @@ export function Searchbar(): JSX.Element {
   return (
     <FormProvider {...form}>
       <form noValidate>
-        <LabeledTextField
+        <TextField
           id="searchbar"
           name="searchbar"
           type="search"
