@@ -3,4 +3,4 @@
 
 yarn tsc
 yarn lint
-yarn test
+yarn test:jest
