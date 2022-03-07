@@ -36,7 +36,9 @@
     "test:jest-watch": "jest --watch",
     "storybook": "start-storybook --no-open -p 6006 ",
     "build-storybook": "build-storybook",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pkg:add": "sh ./scripts/yarn-add.sh",
+    "pkg:remove": "sh ./scripts/yarn-remove.sh"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
