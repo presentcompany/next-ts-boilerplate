@@ -32,15 +32,15 @@ Other libraries that may be of use
 
 ## Getting Started
 
-The template is running on Yarn and uses an **.nvmrc** file.
-
-To get started:
+The template is running on Yarn and uses an **.nvmrc** file. To get started run `make setup`. If this fails for some reason, you can do it manually as described below:
 
 - Create your own `env` file. An example is provided in `.env.sample`
 - Run `nvm use` to ensure you're running the correct Node version
 - Run `yarn` to install dependencies
 - If Husky doesn't exist, run `husky:init` and `husky:prepare`
 - After that, run `yarn dev` to get it up and running locally
+
+**Note to always run `nvm use` before installing or removing NPM package dependencies.**
 
 ## Scripts
 
@@ -54,7 +54,7 @@ To get started:
 | husky:prepare     | creates local .husky dir and prepares husky                                   |
 | prettier:check    | runs prettier check on source                                                 |
 | prettier:fix      | tells prettier to automagically fix errors                                    |
-| lint              | runs next lint                                                                |
+| lint              | runs eslint and stylelint                                                     |
 | lint:fix          | runs next lint and fixes errors                                               |
 | lint:styled       | runs stylelint and lints CSS-IN-JS                                            |
 | lint:styled-fix   | runs stylelint and fixes CSS-IN-JS errors                                     |
@@ -62,9 +62,11 @@ To get started:
 | gen:theme-typings | generates theme typings for Chakra UI theme                                   |
 | cy:test           | runs cypress tests                                                            |
 | cy:open           | runs cypress tests in browser                                                 |
-| test              | runs Jest tests once                                                          |
+| test:jest         | runs Jest tests once                                                          |
 | test:watch        | runs Jest tests in watch mode for changed files only                          |
 | test:watch-all    | runs Jest tests in watch mode for all files                                   |
+| pkg:add           | runs nvm use and yarn adds package(es)                                        |
+| pkg:remove        | runs nvm use and yarn removes package(es)                                     |
 
 ## ENV
 
@@ -112,24 +114,42 @@ export default seo;
 
 ```
 project
-|   .babelrc
+|   .env.sample
 |   .eslintrc.js
 |   .gitignore
 |   .nvmrc
 |   .prettierignore
+|   .stylelintrc
+|   .stylelintignore
+|   .prettierignore
+|   lint-staged.config.js
+|   next.config.js
+|   next-seo.config.ts
 |   prettier.config.js
+|   jest.config.js
+|   tsconfig.json
 |   package.json
+|   yarn.lock
 |   README.md
+└───.github
+└───.husky
+└───.storybook
+└───cypress
+└───scripts
 └───src
-|   └───requests
 |   └───components
 |   └───hooks
 |   └───pages
+|   └───requests
 |   └───state
+|   └───stories
 |   └───theme
+|   └───utils
 ```
 
-### Detailed Structure
+### Sample Detailed Structure
+
+The following illustrates what a more detailed structure looks like.
 
 ```
 project
