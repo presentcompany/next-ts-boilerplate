@@ -40,7 +40,18 @@ The template is running on Yarn and uses an **.nvmrc** file. To get started run 
 - If Husky doesn't exist, run `husky:init` and `husky:prepare`
 - After that, run `yarn dev` to get it up and running locally
 
-**Note to always run `nvm use` before installing or removing NPM package dependencies.** Included are 2 NPM scripts namely: pkg:add and pkg:del that runs `nvm use` before installing or removing packages. Or, to make it even easier you can add this to your ~/.zshrc file:
+**Note to always run `nvm use` before installing or removing NPM package dependencies.** however, there are already a few mechanisms in place to do this.
+
+First, the repo runs on husky and a post-checkout Git Hook is already in place that git diffs the package.json when you switch branches. If it does find differences, it will automatically run the install for you after switching to the specified Node version in your .nvmrc file.
+
+Second, if you do not wish to tamper with your .bashrc or .zshrc or whatever shell it is you're using, included are 2 NPM scripts namely: `pkg:add` and `pkg:del` that runs `nvm use` before installing or removing packages which can be used like so:
+
+```sh
+yarn pkg:add karma mocha chai jasmine -D
+yarn pkg:del react
+```
+
+Or, if you want to, you can add this to your ~/.zshrc file, which detects if an .nvmrc file exists and switches over for you:
 
 ```sh
 # place this after nvm initialization!
@@ -66,7 +77,7 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 ```
 
-then run `source ~/.zshrc` or restart your terminal.
+then run `source ~/.zshrc` or restart your terminal and you can run `yarn add` or `yarn remove` as you wish after.
 
 ## Scripts
 
@@ -475,10 +486,6 @@ The **theme/components** directory houses custom styles for components. An examp
 The **theme/foundations** directory is where custom style and or other configurations are kept. These configurations will then be used to override Chakra-UI's default theme.
 
 ## Notes And Other Instructions
-
-### Setting Up Storybook
-
-If you want to add Storybook to the project, simply run `npx sb init` and follow the prompts.
 
 ### Module Path Aliasing
 
