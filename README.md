@@ -40,7 +40,33 @@ The template is running on Yarn and uses an **.nvmrc** file. To get started run 
 - If Husky doesn't exist, run `husky:init` and `husky:prepare`
 - After that, run `yarn dev` to get it up and running locally
 
-**Note to always run `nvm use` before installing or removing NPM package dependencies.**
+**Note to always run `nvm use` before installing or removing NPM package dependencies.** Included are 2 NPM scripts namely: pkg:add and pkg:remove that runs `nvm use` before installing or removing packages. Or, to make it even easier you can add this to your ~/.zshrc file:
+
+```sh
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+```
+
+then run `source ~/.zshrc` or restart your terminal.
 
 ## Scripts
 
@@ -86,7 +112,15 @@ And remember: **DO NOT COMMIT NOR PUSH THESE ENV FILES WITH SECRETS!** Finally, 
 
 ## Husky
 
-Included in the repo are to Git hooks, namely pre-commit and pre-push. If you wish to add more, you can do something like the following:
+Included in the repo are some Husky Git hooks, namely pre-commit, pre-push and post-checkout.
+
+| Hook          | What it does                                                                                         |
+| ------------- | ---------------------------------------------------------------------------------------------------- |
+| pre-commit    | runs linting and auto-formatting                                                                     |
+| pre-push      | runs TS checks, linting and tests                                                                    |
+| post-checkout | automatically installs dependencies after checking out a branch if there are changes in package.json |
+
+If you wish to add more, you can do something like the following:
 
 ```sh
 npx husky add .husky/my-git-hook-here "yarn test"
