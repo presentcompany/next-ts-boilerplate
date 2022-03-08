@@ -84,6 +84,16 @@ Environment files will be divided into 2 eg. `.env.development` and `.env.produc
 
 And remember: **DO NOT COMMIT NOR PUSH THESE ENV FILES WITH SECRETS!** Finally, refer to [NextJS Env Variables Docs](https://nextjs.org/docs/basic-features/environment-variables) for further information if required.
 
+## Husky
+
+Included in the repo are to Git hooks, namely pre-commit and pre-push. If you wish to add more, you can do something like the following:
+
+```sh
+npx husky add .husky/my-git-hook-here "yarn test"
+```
+
+For more on Husky hook creation, you can refer to the [docs](https://typicode.github.io/husky/#/?id=create-a-hook) and as reference, these are the available [Git Hooks available](https://git-scm.com/docs/githooks)
+
 ## SEO
 
 SEO variables/configurations can be configured via `next-seo.config.js`. By default it comes with the following config, make sure to update this with the appropriate values
