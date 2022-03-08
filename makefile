@@ -82,8 +82,6 @@ IS_NVM_EXISTS := $(shell test -f $(NVM); echo $$?)
 nvm\:install:
 ifeq ($(IS_NVM_EXISTS), 0)
 	echo "NVM found. Proceeding to install Yarn dependencies." && make yarn\:install
-else
-	echo "NVM not found. Please install NVM and 'make setup' again."
 endif
 
 # Yarn ==============================================================================
