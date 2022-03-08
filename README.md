@@ -34,7 +34,7 @@ Other libraries that may be of use
 
 The template is running on Yarn and uses an **.nvmrc** file. To get started run `make setup`. If this fails for some reason, you can do it manually as described below:
 
-- Create your own `env` file. An example is provided in `.env.sample`
+- Create your own `.env` file. An example is provided in `.env.sample`
 - Run `nvm use` to ensure you're running the correct Node version
 - Run `yarn` to install dependencies
 - If Husky doesn't exist, run `husky:init` and `husky:prepare`
