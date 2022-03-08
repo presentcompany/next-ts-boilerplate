@@ -65,8 +65,6 @@ env\:setup:
 	echo "Creating '.env' file (if it does not exist)"; \
 	if [ ! -f .env ]; then \
 		cp .env.sample .env; \
-	else 
-		echo ".env file found. Skipping .env copy."
 	fi; \
 	chmod 664 .env; \
 
