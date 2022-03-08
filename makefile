@@ -88,7 +88,6 @@ yarn\:install:
 	if [[ -f ".nvmrc" ]]; then \
 		set -e; \
 		echo "Installing Yarn dependencies"; \
-		source $(HOME)/.bashrc; \
 		source $(HOME)/.nvm/nvm.sh; \
 		nvm use && yarn; \
 	else \
