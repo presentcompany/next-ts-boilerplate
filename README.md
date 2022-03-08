@@ -32,15 +32,41 @@ Other libraries that may be of use
 
 ## Getting Started
 
-The template is running on Yarn and uses an **.nvmrc** file.
+The template is running on Yarn and uses an **.nvmrc** file. To get started run `make setup`. If this fails for some reason, you can do it manually as described below:
 
-To get started:
-
-- Create your own `env` file. An example is provided in `.env.sample`
+- Create your own `.env` file. An example is provided in `.env.sample`
 - Run `nvm use` to ensure you're running the correct Node version
 - Run `yarn` to install dependencies
 - If Husky doesn't exist, run `husky:init` and `husky:prepare`
 - After that, run `yarn dev` to get it up and running locally
+
+**Note to always run `nvm use` before installing or removing NPM package dependencies.** Included are 2 NPM scripts namely: pkg:add and pkg:del that runs `nvm use` before installing or removing packages. Or, to make it even easier you can add this to your ~/.zshrc file:
+
+```sh
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+```
+
+then run `source ~/.zshrc` or restart your terminal.
 
 ## Scripts
 
@@ -54,7 +80,7 @@ To get started:
 | husky:prepare     | creates local .husky dir and prepares husky                                   |
 | prettier:check    | runs prettier check on source                                                 |
 | prettier:fix      | tells prettier to automagically fix errors                                    |
-| lint              | runs next lint                                                                |
+| lint              | runs eslint and stylelint                                                     |
 | lint:fix          | runs next lint and fixes errors                                               |
 | lint:styled       | runs stylelint and lints CSS-IN-JS                                            |
 | lint:styled-fix   | runs stylelint and fixes CSS-IN-JS errors                                     |
@@ -62,9 +88,11 @@ To get started:
 | gen:theme-typings | generates theme typings for Chakra UI theme                                   |
 | cy:test           | runs cypress tests                                                            |
 | cy:open           | runs cypress tests in browser                                                 |
-| test              | runs Jest tests once                                                          |
+| test:jest         | runs Jest tests once                                                          |
 | test:watch        | runs Jest tests in watch mode for changed files only                          |
 | test:watch-all    | runs Jest tests in watch mode for all files                                   |
+| pkg:add           | runs nvm use and yarn adds package(es)                                        |
+| pkg:del           | runs nvm use and yarn removes package(es)                                     |
 
 ## ENV
 
@@ -81,6 +109,24 @@ Environment files will be divided into 2 eg. `.env.development` and `.env.produc
 **Note that prefix `NEXT_PUBLIC` is required to make it available in the browser.**
 
 And remember: **DO NOT COMMIT NOR PUSH THESE ENV FILES WITH SECRETS!** Finally, refer to [NextJS Env Variables Docs](https://nextjs.org/docs/basic-features/environment-variables) for further information if required.
+
+## Husky
+
+Included in the repo are some Husky Git hooks, namely pre-commit, pre-push and post-checkout.
+
+| Hook          | What it does                                                                                         |
+| ------------- | ---------------------------------------------------------------------------------------------------- |
+| pre-commit    | runs linting and auto-formatting                                                                     |
+| pre-push      | runs TS checks, linting and tests                                                                    |
+| post-checkout | automatically installs dependencies after checking out a branch if there are changes in package.json |
+
+If you wish to add more, you can do something like the following:
+
+```sh
+npx husky add .husky/my-git-hook-here "yarn test"
+```
+
+For more on Husky hook creation, you can refer to the [docs](https://typicode.github.io/husky/#/?id=create-a-hook) and as reference, these are the available [Git Hooks](https://git-scm.com/docs/githooks)
 
 ## SEO
 
@@ -112,24 +158,42 @@ export default seo;
 
 ```
 project
-|   .babelrc
+|   .env.sample
 |   .eslintrc.js
 |   .gitignore
 |   .nvmrc
 |   .prettierignore
+|   .stylelintrc
+|   .stylelintignore
+|   .prettierignore
+|   lint-staged.config.js
+|   next.config.js
+|   next-seo.config.ts
 |   prettier.config.js
+|   jest.config.js
+|   tsconfig.json
 |   package.json
+|   yarn.lock
 |   README.md
+└───.github
+└───.husky
+└───.storybook
+└───cypress
+└───scripts
 └───src
-|   └───requests
 |   └───components
 |   └───hooks
 |   └───pages
+|   └───requests
 |   └───state
+|   └───stories
 |   └───theme
+|   └───utils
 ```
 
-### Detailed Structure
+### Sample Detailed Structure
+
+The following illustrates what a more detailed structure looks like.
 
 ```
 project

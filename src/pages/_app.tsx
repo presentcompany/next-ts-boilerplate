@@ -1,11 +1,13 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 
+import { GA_TRACKING_ID } from '@/utils/analytics';
 import { GlobalStyles } from '@/components/common/index';
 import { theme } from '@/theme/index';
 import * as gtag from '@/utils/analytics';
@@ -45,6 +47,7 @@ function App({ Component, pageProps }: AppProps): React.ReactNode {
 
   // eslint-disable-next-line
   const LayoutNoop = (Component as any).LayoutNoop || Noop;
+
   // remove chrome-bug.css loading class on FCP
   React.useEffect(() => {
     document.body.classList?.remove('loading');
@@ -65,21 +68,40 @@ function App({ Component, pageProps }: AppProps): React.ReactNode {
   }, [router.events]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <ChakraProvider theme={theme}>
-          <GlobalStyles />
-          <CSSReset />
-          <ReactQueryDevtools />
+    <>
+      <Script
+        async
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+      />
 
-          <LayoutNoop pageProps={pageProps}>
-            <RecoilRoot>
-              <Component {...pageProps} />
-            </RecoilRoot>
-          </LayoutNoop>
-        </ChakraProvider>
-      </Hydrate>
-    </QueryClientProvider>
+      <Script id="gtag" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_TRACKING_ID}', {
+            page_path: window.location.pathname,
+          });
+        `}
+      </Script>
+
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <ChakraProvider theme={theme}>
+            <GlobalStyles />
+            <CSSReset />
+            <ReactQueryDevtools />
+
+            <LayoutNoop pageProps={pageProps}>
+              <RecoilRoot>
+                <Component {...pageProps} />
+              </RecoilRoot>
+            </LayoutNoop>
+          </ChakraProvider>
+        </Hydrate>
+      </QueryClientProvider>
+    </>
   );
 }
 
