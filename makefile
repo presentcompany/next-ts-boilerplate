@@ -86,20 +86,8 @@ nvm\:reset:
 
 # Yarn ==============================================================================
 
-add:
-	make yarn\:add
-
-del:
-	make yarn\:del
-
 yarn\:install:
 	./scripts/yarn-install.sh
-
-yarn\:add: 
-	./scripts/yarn-add.sh
-
-yarn\:del: 
-	./scripts/yarn-del.sh
 
 yarn\:clean:
 	./scripts/yarn-clean.sh
