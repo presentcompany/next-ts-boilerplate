@@ -2,7 +2,6 @@
 
 NVM_DIR="$HOME/.nvm"
 
-source $HOME/.bashrc
 source $HOME/.nvm/nvm.sh
 
 if [[ -f ".nvmrc" ]]; then

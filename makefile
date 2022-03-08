@@ -42,14 +42,13 @@ help\:env:
 
 help\:commands:
 	echo '## Common make commands:'
-	echo ' make setup                      alias for setup:app'
+	echo ' make setup                      installs dependencies and creates a default .env file'
 	echo ''
 
 # Setup ============================================================================
 
 setup: 
-	make env\:reset \
-		nvm\:install \
+	chmod -R +x ./scripts && make env\:reset && make nvm\:install
 
 # ENV ==============================================================================
 
@@ -57,20 +56,14 @@ env\:help:
 	make help:env
 
 env\:clean:
-	if [ -f .env ]; then \
-		rm .env; \
-	fi; \
+	./scripts/env-clean.sh
 
-env\:setup:
-	echo "Creating '.env' file (if it does not exist)"; \
-	if [ ! -f .env ]; then \
-		cp .env.sample .env; \
-	fi; \
-	chmod 664 .env; \
+env\:create:
+	./scripts/env-create.sh
 
 env\:reset:
 	make env\:clean \
-		env\:setup
+		env\:create
 
 # NVM ==============================================================================
 
@@ -80,17 +73,33 @@ IS_NVM_EXISTS := $(shell test -f $(NVM); echo $$?)
 nvm\:install:
 ifeq ($(IS_NVM_EXISTS), 0)
 	echo "NVM found. Proceeding to install Yarn dependencies." && make yarn\:install
+else
+	echo "Aborting: NVM not found. Please install NVM and try again."
 endif
+
+nvm\:reset:
+	ifeq ($(IS_NVM_EXISTS), 0)
+		echo "NVM found. Proceeding to install Yarn dependencies." && make yarn\:clean && make yarn\:install
+	else
+		echo "Aborting: NVM not found. Please install NVM and try again."
+	endif
 
 # Yarn ==============================================================================
 
+add:
+	make yarn\:add
+
+del:
+	make yarn\:del
+
 yarn\:install:
-	if [[ -f ".nvmrc" ]]; then \
-		set -e; \
-		echo "Installing Yarn dependencies"; \
-		source $(HOME)/.nvm/nvm.sh; \
-		nvm use && yarn; \
-	else \
-		echo "No .nvmrc found. Switching to default system Node version and proceeding with Yarn dependencies installation."; \
-		nvm use default && yarn; \
-	fi; \
+	./scripts/yarn-install.sh
+
+yarn\:add: 
+	./scripts/yarn-add.sh
+
+yarn\:del: 
+	./scripts/yarn-del.sh
+
+yarn\:clean:
+	./scripts/yarn-clean.sh

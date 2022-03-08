@@ -39,7 +39,7 @@
     "prepare": "husky install",
     "pkg:add": "sh ./scripts/yarn-add.sh",
     "pkg:remove": "sh ./scripts/yarn-remove.sh",
-    "pkg:install": "sh ./scripts/smart-install.sh"
+    "pkg:install": "sh ./scripts/yarn-smart-install.sh"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
