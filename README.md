@@ -40,7 +40,7 @@ The template is running on Yarn and uses an **.nvmrc** file. To get started run 
 - If Husky doesn't exist, run `husky:init` and `husky:prepare`
 - After that, run `yarn dev` to get it up and running locally
 
-**Note to always run `nvm use` before installing or removing NPM package dependencies.** Included are 2 NPM scripts namely: pkg:add and pkg:remove that runs `nvm use` before installing or removing packages. Or, to make it even easier you can add this to your ~/.zshrc file:
+**Note to always run `nvm use` before installing or removing NPM package dependencies.** Included are 2 NPM scripts namely: pkg:add and pkg:del that runs `nvm use` before installing or removing packages. Or, to make it even easier you can add this to your ~/.zshrc file:
 
 ```sh
 # place this after nvm initialization!
@@ -92,7 +92,7 @@ then run `source ~/.zshrc` or restart your terminal.
 | test:watch        | runs Jest tests in watch mode for changed files only                          |
 | test:watch-all    | runs Jest tests in watch mode for all files                                   |
 | pkg:add           | runs nvm use and yarn adds package(es)                                        |
-| pkg:remove        | runs nvm use and yarn removes package(es)                                     |
+| pkg:del           | runs nvm use and yarn removes package(es)                                     |
 
 ## ENV
 
@@ -126,7 +126,7 @@ If you wish to add more, you can do something like the following:
 npx husky add .husky/my-git-hook-here "yarn test"
 ```
 
-For more on Husky hook creation, you can refer to the [docs](https://typicode.github.io/husky/#/?id=create-a-hook) and as reference, these are the available [Git Hooks available](https://git-scm.com/docs/githooks)
+For more on Husky hook creation, you can refer to the [docs](https://typicode.github.io/husky/#/?id=create-a-hook) and as reference, these are the available [Git Hooks](https://git-scm.com/docs/githooks)
 
 ## SEO
 
