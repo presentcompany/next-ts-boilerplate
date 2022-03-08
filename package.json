@@ -38,7 +38,7 @@
     "build-storybook": "build-storybook",
     "prepare": "husky install",
     "pkg:add": "sh ./scripts/yarn-add.sh",
-    "pkg:remove": "sh ./scripts/yarn-remove.sh",
+    "pkg:del": "sh ./scripts/yarn-del.sh",
     "pkg:install": "sh ./scripts/yarn-smart-install.sh"
   },
   "dependencies": {
