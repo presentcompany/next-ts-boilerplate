@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ -f .env ]; then \
   echo "An .env file is found. Removing '.env'..."
   rm .env; \

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ ! -f .env ]; then \
   echo "No '.env' file found. Creating new '.env' with sample variables..."
   touch .env && chmod 664 .env &&

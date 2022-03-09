@@ -16,6 +16,7 @@ export function Newsletter() {
   });
 
   const onSubmit =
+    // eslint-disable-next-line
     (enrollNewsletter: (props: DefaultFormFields) => void) => (values: any) => {
       if (!!values?.newsletter_email) {
         enrollNewsletter({ EMAIL: values.newsletter_email });
