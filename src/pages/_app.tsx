@@ -2,6 +2,7 @@ import React from 'react';
 import { RecoilRoot } from 'recoil';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
+import { DefaultSeo } from 'next-seo';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
@@ -11,8 +12,10 @@ import { GA_TRACKING_ID } from '@/utils/analytics';
 import { GlobalStyles } from '@/components/common/index';
 import { theme } from '@/theme/index';
 import * as gtag from '@/utils/analytics';
+import defaultSEO from '../../next-seo.config';
 
 import type { AppProps } from 'next/app';
+import type { NextPage } from 'next';
 
 const isServerSideRendered = () => {
   return typeof window === 'undefined';
@@ -26,10 +29,18 @@ if (!isServerSideRendered() && process.env.NODE_ENV !== 'production') {
   });
 }
 
-const Noop: React.FC = ({ children }) => <>{children}</>;
+type TNextPageWithLayout = NextPage & {
+  getLayout?: (page: React.ReactElement) => React.ReactNode;
+};
 
-function App({ Component, pageProps }: AppProps): React.ReactNode {
+type TAppPropsWithLayout = AppProps & {
+  Component: TNextPageWithLayout;
+};
+
+function App({ Component, pageProps }: TAppPropsWithLayout): React.ReactNode {
   const TWENTY_FOUR_HOURS_MS = 86400000;
+  const router = useRouter();
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   const [queryClient] = React.useState(
     () =>
@@ -45,15 +56,10 @@ function App({ Component, pageProps }: AppProps): React.ReactNode {
       })
   );
 
-  // eslint-disable-next-line
-  const LayoutNoop = (Component as any).LayoutNoop || Noop;
-
   // remove chrome-bug.css loading class on FCP
   React.useEffect(() => {
     document.body.classList?.remove('loading');
   }, []);
-
-  const router = useRouter();
 
   React.useEffect(() => {
     const handleRouteChange = (url: URL) => {
@@ -86,6 +92,20 @@ function App({ Component, pageProps }: AppProps): React.ReactNode {
         `}
       </Script>
 
+      <DefaultSeo
+        {...defaultSEO}
+        additionalMetaTags={[
+          {
+            property: 'viewport',
+            content: 'initial-scale=1.0, width=device-width'
+          },
+          {
+            name: 'theme-color',
+            content: '#ffffff'
+          }
+        ]}
+      />
+
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <ChakraProvider theme={theme}>
@@ -93,11 +113,7 @@ function App({ Component, pageProps }: AppProps): React.ReactNode {
             <CSSReset />
             <ReactQueryDevtools />
 
-            <LayoutNoop pageProps={pageProps}>
-              <RecoilRoot>
-                <Component {...pageProps} />
-              </RecoilRoot>
-            </LayoutNoop>
+            <RecoilRoot>{getLayout(<Component {...pageProps} />)}</RecoilRoot>
           </ChakraProvider>
         </Hydrate>
       </QueryClientProvider>

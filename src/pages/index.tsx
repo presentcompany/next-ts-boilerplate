@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { QueryClient } from 'react-query';
+import { NextSeo } from 'next-seo';
 import { dehydrate } from 'react-query/hydration';
 import { Flex, Grid, Text } from '@chakra-ui/react';
 
@@ -26,11 +27,12 @@ export default function Home(): React.ReactElement {
   }, [postsResponse]);
 
   return (
-    <Layout
-      title={'My Page Title'}
-      className="home-index"
-      description={'My Page Description'}
-    >
+    <>
+      <NextSeo
+        description={'This is my MyApp Home Page'}
+        title={'MyApp Home Page'}
+      />
+
       <Searchbar />
 
       <Grid
@@ -71,9 +73,13 @@ export default function Home(): React.ReactElement {
       </Grid>
 
       <SocialBanner />
-    </Layout>
+    </>
   );
 }
+
+Home.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout className="layout-home">{page}</Layout>;
+};
 
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<{ dehydratedState: DehydratedState }>
