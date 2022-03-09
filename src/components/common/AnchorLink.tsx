@@ -18,7 +18,7 @@ export function AnchorLink({
   ...props
 }: TAnchorLinkProps): React.ReactElement {
   return (
-    <NextLink href={href}>
+    <NextLink href={href} passHref>
       <Link variant={variant} isExternal={isExternal} {...props}>
         {children}
       </Link>
