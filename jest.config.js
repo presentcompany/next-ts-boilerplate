@@ -7,6 +7,17 @@ const createJestConfig = nextJest({
 
 // * Add any custom config to be passed to Jest
 const customJestConfig = {
+  testMatch: ['**/tests/(integration|unit)/**/?(*.)+(spec|test).[jt]s?(x)'],
+  moduleNameMapper: {
+    '^@/requests(.*)$': '<rootDir>/src/requests/$1',
+    '^@/components(.*)$': '<rootDir>/src/components/$1',
+    '^@/hooks(.*)$': '<rootDir>/src/hooks/$1',
+    '^@/pages(.*)$': '<rootDir>/src/pages/$1',
+    '^@/state(.*)$': '<rootDir>/src/state/$1',
+    '^@/theme(.*)$': '<rootDir>/src/theme/$1',
+    '^@/public(.*)$': '<rootDir>/public/$1',
+    '^@/utils(.*)$': '<rootDir>/src/utils/$1'
+  },
   collectCoverageFrom: ['<rootDir>/src/js/**/*.{js,jsx,ts,tsx}'],
   collectCoverage: true,
   coverageThreshold: {
