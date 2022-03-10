@@ -18,7 +18,7 @@ const customJestConfig = {
     '^@/public(.*)$': '<rootDir>/public/$1',
     '^@/utils(.*)$': '<rootDir>/src/utils/$1'
   },
-  collectCoverageFrom: ['<rootDir>/src/js/**/*.{js,jsx,ts,tsx}'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.{js,jsx,ts,tsx}'],
   collectCoverage: true,
   coverageThreshold: {
     global: {
