@@ -16,7 +16,9 @@ export function Header() {
       <Container maxW="container.xl">
         <Flex py="4">
           <Box py="2">
-            <Text size="xs">{process.env.NEXT_PUBLIC_APP_NAME}</Text>
+            <Text size="xs" as="h1">
+              {process.env.NEXT_PUBLIC_APP_NAME}
+            </Text>
           </Box>
 
           <Spacer />
