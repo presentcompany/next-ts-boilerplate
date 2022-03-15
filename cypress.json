@@ -1,10 +1,10 @@
 {
-  "integrationFolder": "test/e2e",
+  "baseUrl": "http://localhost:3000",
+  "integrationFolder": "tests/e2e",
   "fixturesFolder": false,
   "defaultCommandTimeout": 12000,
   "pageLoadTimeout": 120000,
   "ignoreTestFiles": ["tsconfig.json"],
   "chromeWebSecurity": false,
-  "video": false,
-  "testFiles": "**/*.feature"
+  "video": false
 }
