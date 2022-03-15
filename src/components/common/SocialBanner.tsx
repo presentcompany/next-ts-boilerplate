@@ -23,6 +23,7 @@ export function SocialBanner() {
       ml="-51vw"
       mr="-50vw"
       minH="240px"
+      as="section"
     >
       <Text pb={4} color="white">
         Join Us!

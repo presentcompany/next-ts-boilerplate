@@ -43,10 +43,11 @@ export default function Home(): React.ReactElement {
           'repeat(5, 1fr)'
         ]}
         gap={6}
+        as="section"
       >
         {!!posts?.length &&
           posts.map(({ title, body, id }) => (
-            <Post key={id}>
+            <Post key={id} as="article">
               <Text as="h2" fontWeight={900} color="brand.500">
                 {title}
               </Text>
