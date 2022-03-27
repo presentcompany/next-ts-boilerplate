@@ -40,3 +40,6 @@ yarn-error.log*
 
 # phpstorm
 .idea
+
+# build artifacts
+tsconfig.tsbuildinfo
