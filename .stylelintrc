@@ -16,6 +16,8 @@
     "max-empty-lines": 1,
     "number-max-precision": 2,
     "number-leading-zero": "always",
-    "number-no-trailing-zeros": true
+    "number-no-trailing-zeros": true,
+    "function-no-unknown": null,
+    "no-duplicate-selectors": null
   }
 }
