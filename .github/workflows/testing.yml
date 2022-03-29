@@ -22,13 +22,10 @@ jobs:
 
       - name: Cypress install
         uses: cypress-io/github-action@v2
-        with:
-          runTests: false
 
       - run: yarn test:jest
       - run: yarn cypress info
       - run: node -p 'os.cpus()'
-      - run: yarn cy:ci
 
       - name: Save build folder
         uses: actions/upload-artifact@v3
