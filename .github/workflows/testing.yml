@@ -32,4 +32,4 @@ jobs:
         run: yarn test:jest
 
       - name: Run User Flow Tests
-        run: yarn cy:test
+        run: yarn cy:ci

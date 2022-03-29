@@ -29,8 +29,9 @@
     "post-install": "yarn run gen:theme-typings",
     "gen:sitemap": "next-sitemap",
     "gen:theme-typings": "chakra-cli tokens './src/theme/index.ts'",
-    "cy:test": "cypress run",
+    "cy:test": "cypress run --config-file cypress.dev.json",
     "cy:open": "cypress open",
+    "cy:ci": "cypress run",
     "test:jest": "jest --passWithNoTests",
     "test:jest-since-dev": "jest --changedSince=develop",
     "test:jest-watch": "jest --watch",
@@ -40,7 +41,8 @@
     "prepare": "husky install",
     "pkg:add": "sh ./scripts/yarn-add.sh",
     "pkg:del": "sh ./scripts/yarn-del.sh",
-    "pkg:install": "sh ./scripts/yarn-smart-install.sh"
+    "pkg:install": "sh ./scripts/yarn-smart-install.sh",
+    "browserslist:update": "npx browserslist@latest --update-db"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
