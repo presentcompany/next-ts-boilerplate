@@ -17,19 +17,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
-      - name: Cypress install
-        uses: cypress-io/github-action@v2
-
-      - run: yarn test:jest
-      - run: yarn cypress info
-      - run: node -p 'os.cpus()'
-
-      - name: Save build folder
-        uses: actions/upload-artifact@v3
+      - name: Setting Up Node.js
+        uses: actions/setup-node@v2
         with:
-          name: build
-          if-no-files-found: error
-          path: build
+          node-version: '16'
+          cache: 'yarn'
+
+      - name: Installing NPM packages
+        run: yarn
+
+      - name: Run Unit Tests
+        run: yarn test:jest
+
+      - name: Run User Flow Tests
+        run: yarn test:e2e
