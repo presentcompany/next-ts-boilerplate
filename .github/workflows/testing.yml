@@ -1,4 +1,4 @@
-name: Tests
+name: Unit and User Flow Testing
 
 on:
   push:
@@ -7,25 +7,34 @@ on:
   pull_request:
     branches: [master, main, develop]
 
+  workflow_run:
+    workflows: ['Linting']
+    types:
+      - completed
+
 jobs:
-  cypress-run:
+  linting:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Setting Up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - name: Installing NPM packages
+        run: yarn
+
+      - name: Run Unit Tests
+        run: yarn test:jest
+
+      - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
-          install-command: yarn
-          runTests: false
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          working-directory: tests/e2e
-          config-file: ./cypress.dev.json
           build: yarn build
-          start: yarn start
-          wait-on: http://localhost:3000
+          start: yarn test:e2e
+          wait-on: 'http://localhost:3099'
+          config: baseUrl=http://localhost:3099
