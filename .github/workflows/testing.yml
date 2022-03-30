@@ -17,9 +17,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          install-command: yarn
           working-directory: tests/e2e
           config-file: cypress.dev.json
-          build: yarn build
-          start: yarn start
+          build: npm run build
+          start: npm run start
           wait-on: http://localhost:3000
