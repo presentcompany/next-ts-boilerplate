@@ -17,7 +17,7 @@ import defaultSEO from '../../next-seo.config';
 import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
 
-const Noop: FC = ({ children }) => <>{children}</>;
+const Noop: React.FC = ({ children }) => <>{children}</>;
 
 const isServerSideRendered = () => {
   return typeof window === 'undefined';
