@@ -37,7 +37,7 @@
     "test:jest-since-dev": "jest --changedSince=develop",
     "test:jest-watch": "jest --watch",
     "test:prep": "yarn build && yarn start -p 3099",
-    "test:e2e": "NODE_ENV=test start-server-and-test test:prep http://localhost:3099 cy:open",
+    "test:e2e": "NODE_ENV=test start-server-and-test 'yarn test:prep'",
     "storybook": "start-storybook --no-open -p 6006 ",
     "build-storybook": "build-storybook",
     "prepare": "husky install",
