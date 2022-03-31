@@ -34,6 +34,7 @@ jobs:
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
+          build: yarn build
           config-file: ./cypress.ci.json
           start: yarn test:e2e
           wait-on: 'http://localhost:3099'
