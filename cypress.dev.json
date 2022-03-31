@@ -1,5 +1,0 @@
-{
-  "extends": "./cypress.json",
-  "integrationFolder": "tests/e2e",
-  "baseUrl": "http://localhost:3000"
-}
