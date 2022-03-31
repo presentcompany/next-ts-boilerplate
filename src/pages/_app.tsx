@@ -17,6 +17,8 @@ import defaultSEO from '../../next-seo.config';
 import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
 
+const Noop: FC = ({ children }) => <>{children}</>;
+
 const isServerSideRendered = () => {
   return typeof window === 'undefined';
 };
@@ -38,6 +40,7 @@ type TAppPropsWithLayout = AppProps & {
 };
 
 function App({ Component, pageProps }: TAppPropsWithLayout): React.ReactNode {
+  const LayoutNoop = (Component as any).LayoutNoop || Noop;
   const TWENTY_FOUR_HOURS_MS = 86400000;
   const router = useRouter();
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -113,7 +116,11 @@ function App({ Component, pageProps }: TAppPropsWithLayout): React.ReactNode {
             <CSSReset />
             <ReactQueryDevtools />
 
-            <RecoilRoot>{getLayout(<Component {...pageProps} />)}</RecoilRoot>
+            <RecoilRoot>
+              <LayoutNoop pageProps={pageProps}>
+                {getLayout(<Component {...pageProps} />)}
+              </LayoutNoop>
+            </RecoilRoot>
           </ChakraProvider>
         </Hydrate>
       </QueryClientProvider>
