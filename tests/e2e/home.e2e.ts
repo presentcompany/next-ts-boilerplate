@@ -6,7 +6,7 @@ describe('Home', () => {
       cy.visit('/').wait(1000);
 
       cy.findByLabelText('Search')
-        .type(postTitle)
+        .type(postTitle, { force: true })
         .should('have.value', postTitle);
 
       cy.findByText(postTitle).should('exist');
