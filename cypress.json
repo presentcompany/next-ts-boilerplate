@@ -1,4 +1,5 @@
 {
+  "baseUrl": "http://localhost:3099",
   "integrationFolder": "tests/e2e",
   "fixturesFolder": false,
   "defaultCommandTimeout": 12000,
