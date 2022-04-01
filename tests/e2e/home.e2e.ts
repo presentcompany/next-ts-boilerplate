@@ -3,7 +3,7 @@ describe('Home', () => {
     it('displays a card with searched post title', () => {
       const postTitle = 'sapiente omnis fugit eos';
 
-      cy.visit('/').wait(1000);
+      cy.visit('/', { failOnStatusCode: false }).wait(1000);
 
       cy.findByLabelText('Search')
         .type(postTitle, { force: true })
