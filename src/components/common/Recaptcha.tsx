@@ -1,11 +1,16 @@
 import React from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+
+import {
+  GoogleReCaptchaProvider,
+  GoogleReCaptcha
+} from 'react-google-recaptcha-v3';
+
 import { FormControl, Text } from '@chakra-ui/react';
 
 type TRecaptchaProps = {
   id?: string;
   errorMsg?: string;
-  onChange?: (token: string | null) => void;
+  onChange: (token: string) => void | Promise<void>;
 };
 
 export function Recaptcha({
@@ -18,7 +23,9 @@ export function Recaptcha({
 
   return (
     <FormControl id={id} mb="2em" className={'g-recaptcha'}>
-      <ReCAPTCHA sitekey={RECAPTCHA_API_KEY} onChange={onChange} />
+      <GoogleReCaptchaProvider reCaptchaKey={RECAPTCHA_API_KEY}>
+        <GoogleReCaptcha onVerify={onChange} />
+      </GoogleReCaptchaProvider>
 
       {!!errorMsg && (
         <Text fontSize="0.63rem" textTransform="capitalize" color="orange.100">
