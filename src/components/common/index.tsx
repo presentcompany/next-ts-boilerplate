@@ -9,6 +9,5 @@ export { TextField } from './TextField';
 export { Layout } from './Layout';
 export { GlobalStyles } from './GlobalStyles';
 export { Input } from './Input';
-export { Newsletter } from './Newsletter';
 export { Recaptcha } from './Recaptcha';
 export { SocialBanner } from './SocialBanner';
