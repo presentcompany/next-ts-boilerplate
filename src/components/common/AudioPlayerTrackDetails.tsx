@@ -51,8 +51,10 @@ function AudioPlayerScrubber({
     <AudioPlayerScrubberInnerContainer>
       <Slider
         value={played * 100}
-        onChange={onSliderChange}
-        onAfterChange={onSliderAfterChange}
+        onChange={onSliderChange as (value: number | number[]) => void}
+        onAfterChange={
+          onSliderAfterChange as (value: number | number[]) => void
+        }
       />
     </AudioPlayerScrubberInnerContainer>
   );

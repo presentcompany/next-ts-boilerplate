@@ -27,7 +27,7 @@ export function AudioPlayerVolumeControl({
         <Slider
           vertical={vertical}
           value={volumeValue}
-          onChange={handleChangeVolume}
+          onChange={handleChangeVolume as (value: number | number[]) => void}
         />
 
         <VolumeMuteButton onClick={handleMuteVolume}>
